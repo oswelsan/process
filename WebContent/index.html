@@ -1,0 +1,40 @@
+	<html ng-app="myApp">
+	<head>
+    <link href="css/animate.css" rel="stylesheet">
+    <script src="js/lib/jquery/jquery-1.12.1.min.js"></script>
+  	<script src="js/lib/bootstrap/bootstrap.min.js"></script>
+    <script src="js/lib/angular/angular.min-1.5.0.js"></script>
+    <script src="js/lib/angular/angular-animate.min-1.5.0.js"></script>
+    <script src="js/lib/bootstrap/ui-bootstrap-tpls-1.0.2.js"></script>
+    <link href="css/bootstrap/bootstrap.min-3.3.6.css" rel="stylesheet">
+    <script type="text/javascript" src="js/login/modules.js"></script>
+    <script type="text/javascript" src="js/login/directives.js"></script>
+    <script type="text/javascript" src="js/login/controllers.js"></script>
+
+	</head>
+	<body ng-controller='BaseLoginController'>
+		<nav class="navbar navbar-default">
+			<div class="container-fluid">
+
+				<!-- Collect the nav links, forms, and other content for toggling -->
+				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+					<ul class="nav navbar-nav navbar-right">
+						<li ng-show="!isLoginUser"><a href ng-click="loginWindow()">Login</a></li>
+						<li ng-show="isLoginUser" class="dropdown">
+							<a class="dropdown-toggle" data-toggle="dropdown" href="#">{{loginUserName}}
+        						<span class="caret"></span>
+        					</a>
+        					<ul class="dropdown-menu">
+        						<li><a href ng-click="logoutWindow()">Sign out</a></li>
+        					</ul>
+							
+						</li>
+					</ul>
+				</div><!-- /.navbar-collapse -->
+			</div><!-- /.container-fluid -->
+		</nav>
+        <div class="container">
+        	<H1>Welcome to AngularJS with Bootstrap Model Example </h1>
+        </div>
+	</body>
+	</html>
