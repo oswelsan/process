@@ -1,4 +1,4 @@
-	
+	var myApp = angular.module('myApp',['ngAnimate', 'ui.bootstrap']);
 	myApp.controller('BaseLoginController',function($scope,$uibModal,$rootScope){
 		$scope.isLoginUser = false;
 		$scope.loginWindow = function(){
