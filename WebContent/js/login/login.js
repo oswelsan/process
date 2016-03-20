@@ -19,9 +19,8 @@
 	})
 	.controller('LoginController',function($scope,$uibModal,$rootScope){
 		$scope.user = {};
-		$scope.showLoginUser = false;
+		$scope.showLoginUser = true;
 		$scope.showWork = false;
-		$scope.showAuth = true;
 		$scope.loginWindow = function(){
 				var modalInstance = $uibModal.open({
 				      animation: true,
@@ -33,26 +32,18 @@
 		$scope.logoutWindow = function(){
 			$scope.showLoginUser = true;
 			$scope.showWork = false;
-			$scope.showAuth = false;
 		}
 		// here is a message listener that lister isLoginAction
 	    $rootScope.$on('isLoginAction',function(event,username){
 			$scope.showLoginUser = false;
 			$scope.loginUserName = username;
 			$scope.showWork = true;
-			$scope.showAuth = false;
 		})
 		
 		$scope.doLogin = function (user) {
 			$scope.buttonText = "Login...";
 			// Once the user is authenticated then a message to be broadcast to another controller.
 		    $rootScope.$broadcast('isLoginAction',user.username);
-		 }
-	    
-		$scope.doAuth = function () {
-			$scope.showAuth = false;
-			$scope.showLoginUser = true;
-			$scope.showWork = false;
 		 }
 	    
 	    $scope.data = {

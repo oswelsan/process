@@ -30,6 +30,17 @@
 						</tr>
 						<tr>
 							<td>
+								<label for="mySelect">Ambiente:</label>
+							    <select name="mySelect" id="mySelect"
+							      ng-options="option.name for option in data.availableOptions track by option.id"
+							      ng-model="data.selectedOption"></select>
+							</td>
+						</tr>
+						
+						
+						
+						<tr>
+							<td>
 								<form-element label="">
 				                    <div class="text-right">
 				                        <button type="submit"
