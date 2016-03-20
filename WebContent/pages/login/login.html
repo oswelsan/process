@@ -1,22 +1,46 @@
-          <div class="form-login center-block" ng-show="!isLoginUser">
-          			<form role="form" name="userForm" class="form-horizontal" ng-submit="doLogin(user)" novalidate>
-					<h4>SQL SERVER</h4>
-					<form-element label="Usuario" mod="username" ng-class="{ 'has-error': userForm.username.$invalid && userForm.username.$dirty }">
-		                <input type="text" name="username" ng-model="user.username" class="form-control" placeholder="Introduzca su nombre de usuario" required/>
-		                <small class="errorMessage" ng-show="userForm.username.$dirty && userForm.username.$invalid">Usuario incorrecto</small>
-		            </form-element>
-		            <form-element label="Contraseña" mod="password" ng-class="{ 'has-error': userForm.password.$invalid && userForm.password.$dirty }">
-		                <input type="password" name="password"  ng-model="user.password" class="form-control" placeholder="Introduzca su contraseña"  required/>
-		                <small class="errorMessage" ng-show="userForm.password.$dirty && userForm.password.$invalid">Contraseña incorrecta</small>
-		            </form-element>
-		            <form-element label="">
-	                    <div class="text-right">
-	                        <button type="submit"
-	                                ng-disabled="userForm.$invalid"
-	                                class="btn btn-sm btn-primary">
-	                            <i class="ace-icon fa fa-check"></i>Iniciar Sesión
-	                        </button>
-	                    </div>
-		            </form-element>
+          <div class="ambientewrapper center-block">
+          			<form role="form" name="userForm" ng-submit="doLogin(user)" novalidate>
+					
+					<table style="width:100%">
+						<tr>
+							<td>
+								<h1 class="loginambiente">SQL SERVER</h1> <img width="40px" src="images/unidad.png">
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<hr/>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<form-element label="Usuario" mod="username" ng-class="{ 'has-error': userForm.username.$invalid && userForm.username.$dirty }">
+					                <input type="text" name="username" ng-model="user.username" class="form-control" placeholder="Introduzca su nombre de usuario" required/>
+					                <small class="errorMessage" ng-show="userForm.username.$dirty && userForm.username.$invalid">Usuario incorrecto</small>
+					            </form-element>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<form-element label="Contrase&ntilde;a" mod="password" ng-class="{ 'has-error': userForm.password.$invalid && userForm.password.$dirty }">
+					                <input type="password" name="password"  ng-model="user.password" class="form-control" placeholder="Introduzca su contraseÃ±a"  required/>
+					                <small class="errorMessage" ng-show="userForm.password.$dirty && userForm.password.$invalid">Contrase&ntilde;a incorrecta</small>
+					            </form-element>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<form-element label="">
+				                    <div class="text-right">
+				                        <button type="submit"
+				                                ng-disabled="userForm.$invalid"
+				                                class="btn btn-sm btn-primary">
+				                            <i class="ace-icon fa fa-check"></i>Iniciar SesiÃ³n
+				                        </button>
+				                    </div>
+					            </form-element>
+							</td>
+						</tr>
+					</table>
 				</form>
             </div>

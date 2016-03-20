@@ -1,25 +1,27 @@
-	<html ng-app="myApp">
+	<html ng-app="myApp" >
 	<head>
-    <link href="css/animate.css" rel="stylesheet">
+	<meta charset="utf-8">
     <script src="js/lib/jquery/jquery-1.12.1.min.js"></script>
   	<script src="js/lib/bootstrap/bootstrap.min.js"></script>
     <script src="js/lib/angular/angular.min-1.5.0.js"></script>
     <script src="js/lib/angular/angular-animate.min-1.5.0.js"></script>
     <script src="js/lib/bootstrap/ui-bootstrap-tpls-1.0.2.js"></script>
     <link href="css/bootstrap/bootstrap.min-3.3.6.css" rel="stylesheet">
-    <link href="css/login/login.css" rel="stylesheet">
+    <link href="css/animate.css" rel="stylesheet">
+    
     <script type="text/javascript" src="js/login/login.js"></script>
-
+	<link href="css/login/login.css" rel="stylesheet">
+	
 	</head>
-	<body ng-controller="BaseLoginController">
+	<body ng-controller="LoginController">
 		<nav class="navbar navbar-default">
 			<div class="container-fluid">
 				<div class="brandlabel">Process</div>
 				<!-- Collect the nav links, forms, and other content for toggling -->
 				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 					<ul class="nav navbar-nav navbar-right">
-						<li ng-show="!isLoginUser">Deslogueado</li>
-						<li ng-show="isLoginUser" class="dropdown">
+						<li ng-show="showLoginUser">Deslogueado</li>
+						<li ng-show="showWork" class="dropdown">
 							<a class="dropdown-toggle" data-toggle="dropdown" href="#">{{loginUserName}}
         						<span class="caret"></span>
         					</a>
@@ -34,38 +36,10 @@
 		</nav>
         <div class="container">
 	          <div class="row">
-					<div ng-include="pages/login/login.html"></div>
-					
-					<div class="form-login center-block" ng-show="!isLoginUser">
-		          		<form role="form" name="userForm" class="form-horizontal" ng-submit="doLogin(user)" novalidate>
-							<h4>SQL SERVER</h4>
-							<form-element label="Usuario" mod="username" ng-class="{ 'has-error': userForm.username.$invalid && userForm.username.$dirty }">
-				                <input type="text" name="username" ng-model="user.username" class="form-control" placeholder="Introduzca su nombre de usuario" required/>
-				                <small class="errorMessage" ng-show="userForm.username.$dirty && userForm.username.$invalid">Usuario incorrecto</small>
-				            </form-element>
-				            <form-element label="Contraseña" mod="password" ng-class="{ 'has-error': userForm.password.$invalid && userForm.password.$dirty }">
-				                <input type="password" name="password"  ng-model="user.password" class="form-control" placeholder="Introduzca su contraseña"  required/>
-				                <small class="errorMessage" ng-show="userForm.password.$dirty && userForm.password.$invalid">Contraseña incorrecta</small>
-				            </form-element>
-				            <form-element label="">
-			                    <div class="text-right">
-			                        <button type="submit"
-			                                ng-disabled="userForm.$invalid"
-			                                class="btn btn-sm btn-primary">
-			                            <i class="ace-icon fa fa-check"></i>Iniciar Sesión
-			                        </button>
-			                    </div>
-				            </form-element>
-						</form>
-		            </div>
-		            
-		            
-		            <div ng-include="pages/trabajo/trabajo.html"></div>
-				            
-		            <div class="center-block" ng-show="isLoginUser">
-		            		Cesta en construcción...
-		            </div>		            
-	           </div>
+	          		<div ng-include="'pages/login/login.html'" ng-show="showLoginUser"></div>
+	          		<div ng-include="'pages/login/login2.html'" ng-show="showAuth"></div>
+					<div ng-include="'pages/work/cesta.html'" ng-show="showWork"></div>           
+	          </div>
 		</div>
 	</body>
 	</html>
