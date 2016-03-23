@@ -1,0 +1,29 @@
+﻿<table st-safe-src="vm.tasks" st-table="vm.displayedTasks" class="table table-hover">
+    <thead>
+        <tr>
+            <th>
+            </th>
+           <th colspan="4"><input st-search placeholder="global search" class="input-sm form-control" type="search" />  </th>
+        </tr>
+        <tr>
+            <th st-sort="pNudoc">#</th>
+            <th st-sort="pNbpersona">Sent by</th>
+            <th st-sort="pNbpuesto">Role</th>
+            <th st-sort="pNbwf">Workflow</th>
+            <th st-sort="pDetalle">Detail</th>
+            <th st-sort="pFeini">Date</th>
+            <th st-sort="pTiempo">Time</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr ng-repeat="task in vm.displayedTasks | filter:{pSemaforo:vm.semaforo}">
+            <td>{{task.pNudoc}}</td>
+            <td>{{task.pNbpersona}}</td>
+            <td>{{task.pNbpuesto}}</td>
+            <td>{{task.pNbwf}}</td>
+            <td>{{task.pDetalle}}</td>
+            <td>{{task.pFeini}}</td>
+            <td>{{task.pTiempo}}</td>
+        </tr>
+    </tbody>
+</table>

@@ -1,0 +1,21 @@
+﻿<div class="panel-group">
+    <div class="panel panel-default" ng-repeat="service in mainCtrl.services">
+        <div class="panel-heading">
+            <h4 class="panel-title">
+                <a ui-sref="{{service.route}}" ui-sref-opts ="{reload:true}"><span class="glyphicon glyphicon-folder-close"></span>{{service.title}}</a>
+            </h4>
+        </div>
+        <div class="panel-collapse">
+            <div class="panel-body">
+                <table class="table">
+                    <tr ng-repeat="subservice in service.subservices">
+                        <td>
+                            <a ui-sref="{{subservice.route}}({filter:{{subservice.value}}})" ui-sref-opts ="{reload:true}"><span class="{{subservice.icon}}"></span>{{subservice.name}}</a>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <pre>{{$state.current | json}}</pre>
+    </div>
+</div>

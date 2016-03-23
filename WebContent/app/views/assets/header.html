@@ -1,0 +1,17 @@
+<div class="container-fluid">
+    <div class="navbar-header">
+        <button class="navbar-toggle" ng-click="mainCtrl.isCollapsed = !mainCtrl.isCollapsed">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" ui-sref="root.environments">Process</a>
+    </div>
+
+    <div class="navbar-collapse" role="navigation" uib-collapse="mainCtrl.isCollapsed">
+        <ul class="nav navbar-nav">
+            <li><a ui-sref="root.tasks">Tasks</a></li>
+        </ul>
+    </div>
+</div>

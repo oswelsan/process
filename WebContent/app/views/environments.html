@@ -1,0 +1,9 @@
+﻿<div class="jumbotron text-center">
+
+    <h1>{{vm.title}}</h1>
+
+    <div ng-repeat="environment in vm.environments">
+        <a ui-sref="root.login" ng-click="vm.setEnvironment(environment.name)"><label>{{environment.name}}</label></a>
+    </div>
+    <pre>Environment= {{vm.environments}}</pre>
+</div>

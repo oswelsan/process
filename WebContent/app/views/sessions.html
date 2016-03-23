@@ -1,0 +1,47 @@
+﻿			<div class="ambientewrapper center-block" ng-show="!vm.isLogged">
+				
+          			<form>
+					
+					<table style="width:100%">
+						<tr>
+							<td>
+								<h1 class="loginambiente">{{vm.title}}</h1> <img width="40px" src="app/images/unidad.png">
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<hr/>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								Usuario: <input type="text" ng-model="vm.user.name" />
+							</td>
+						</tr>
+						<tr>
+							<td>
+								Contraseña: <input type="password" ng-model="vm.user.pass" />
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<form-element label="">
+				                    <div class="text-right">
+				                        <a ng-click="vm.login()"><label>Login</label></a>
+				                        <a ng-click="vm.logout()"><label>Logout</label></a>
+				                    </div>
+					            </form-element>
+							</td>
+						</tr>
+					</table>
+					<pre>User={{vm.user}}</pre>
+            		<pre>Response={{vm.response}}</pre>
+				</form>
+				
+            </div>
+            
+		    <div ng-show="vm.isLogged">
+		        <a ng-click="vm.loginRenew()"><label>Renew</label></a>
+		        <a ng-click="vm.loginRecover()"><label>Recover</label></a>
+		        <a ng-click="vm.loginBack()"><label>Back</label></a>
+		    </div>
