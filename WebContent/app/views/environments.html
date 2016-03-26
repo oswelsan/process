@@ -13,17 +13,30 @@
 			</tr>
 			<tr>
 				<td>
-					<table style="width:100%;text-align:left;margin-bottom: 5px;margin-top: 5px">
+					<table style="width:100%;text-align:left;margin-bottom: 5px;margin-top: 5px;margin-bottom: 70px;">
 						<tr>
 							<td style="width:20%;">
-							    <div ng-repeat="environment in vm.environments">
-							    	<a ui-sref="root.login" ng-click="vm.setEnvironment(environment.name)"><label>{{environment.name}}</label></a>
-							    </div>
+								Ambiente:
+							</td>
+							<td>
+								<select  name="environments" id="environments" ng-options="environment.name for environment in vm.environments track by environment.name" ng-model="vm.selectedOption">
+							    </select>
 							</td>
 						</tr>
 					</table>
 				</td>
-			</tr>	
+			</tr>
+			<tr>
+				<td>
+				    <button type="button"
+				    	ui-sref="root.login"
+                      	ng-click="vm.setEnvironment(sql)"
+                              ng-disabled="userForm.$invalid"
+                              class="btn btn-sm btn-primary">
+                          <i class="ace-icon fa fa-check"></i>Aceptar
+                    </button>
+				</td>
+			</tr>
 		</table>
 	</form>
 

@@ -23,14 +23,14 @@
         function getEnvironments() {
             processEngine.getEnvironments()
                 .then(function(data) {
-                	
                     vm.environments = data;
                     return vm.environments;
                 });
         }
 
         function setEnvironment(environment) {
-            user.server = environment;
+        	environment = "sql";
+        	user.server = environment;
         }
     }
 
