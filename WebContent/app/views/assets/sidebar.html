@@ -1,21 +1,69 @@
-﻿<div class="panel-group">
-    <div class="panel panel-default" ng-repeat="service in mainCtrl.services">
-        <div class="panel-heading">
-            <h4 class="panel-title">
-                <a ui-sref="{{service.route}}" ui-sref-opts ="{reload:true}"><span class="glyphicon glyphicon-folder-close"></span>{{service.title}}</a>
-            </h4>
-        </div>
-        <div class="panel-collapse">
-            <div class="panel-body">
-                <table class="table">
-                    <tr ng-repeat="subservice in service.subservices">
-                        <td>
-                            <a ui-sref="{{subservice.route}}({filter:{{subservice.value}}})" ui-sref-opts ="{reload:true}"><span class="{{subservice.icon}}"></span>{{subservice.name}}</a>
-                        </td>
-                    </tr>
-                </table>
-            </div>
-        </div>
-        <pre>{{$state.current | json}}</pre>
-    </div>
+﻿
+
+
+<div id="outer-wrap">
+  	
+	<!-- Navigation -->
+	<nav class="mainNav">
+	<div class="w-clearfix verticalnavbarbutton" data-ix="mostrar-menu-de-iniciar">
+		
+		<div class="servicebuttonlabel">Iniciar  <i class="fa fa-plus"></i></div>
+	</div>
+	
+	
+		<ul>
+			<li class="selected"><a href="#">Menu Principal 1</a>
+				<ul>
+					<li><a href="#">Sub Menu 1</a></li>
+					<li><a href="#">Sub Menu 2</a></li>
+					<li><a href="#">Sub Menu 3</a>
+						<ul>
+							<li><a href="#">Sub Sub Menu 1</a></li>
+							<li><a href="#">Sub Sub Menu 2</a></li>
+							<li><a href="#">Sub Sub Menu 3</a></li>
+							<li><a href="#">Sub Sub Menu 4</a></li>
+							<li><a href="#">Sub Sub Menu 5</a></li>
+						</ul>
+					</li>
+					<li><a href="#">Sub Menu 4</a></li>
+					<li><a href="#">Sub Menu 5</a></li>
+				</ul>
+			</li>
+			<li><a>Menu Principal 2</a>
+				<ul>
+					<li><a href="#">Sub Menu 1</a></li>
+					<li><a href="#">Sub Menu 2</a></li>
+					<li><a href="#">Sub Menu 3</a></li>
+					<li><a href="#">Sub Menu 4</a></li>
+					<li><a href="#">Sub Menu 5</a></li>
+				</ul>
+			</li>
+			<li><a href="#">Menu Principal 3</a></li>
+			<li><a href="#">Menu Principal 4</a>
+				<ul>
+					<li><a href="#">Sub Menu 1</a></li>
+					<li><a href="#">Sub Menu 2</a></li>
+					<li><a href="#">Sub Menu 3</a></li>
+					<li><a href="#">Sub Menu 4</a></li>
+					<li><a href="#">Sub Menu 5</a></li>
+				</ul>
+			</li>
+		</ul>
+	</nav>
+
 </div>
+
+<script>
+		jQuery(document).ready(function(){
+		
+			//Accordion Nav
+			jQuery('.mainNav').navAccordion({
+				expandButtonText: '<i class="fa fa-plus"></i>',  //Text inside of buttons can be HTML
+				collapseButtonText: '<i class="fa fa-minus"></i>'
+			}, 
+			function(){
+				console.log('Callback')
+			});
+			
+		});
+</script>
