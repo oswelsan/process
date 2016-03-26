@@ -19,7 +19,7 @@
         vm.logout = logout;
         vm.response = {};
 
-        //activate();
+        activate();
 
 
         function login() {
