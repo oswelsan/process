@@ -5,50 +5,22 @@
   	
 	<!-- Navigation -->
 	<nav class="mainNav">
-	<div class="w-clearfix verticalnavbarbutton" data-ix="mostrar-menu-de-iniciar">
 		
-		<div class="servicebuttonlabel">Iniciar  <i class="fa fa-plus"></i></div>
-	</div>
+		<div class="w-clearfix verticalnavbarbutton" data-ix="mostrar-menu-de-iniciar">
+			<div class="servicebuttonlabel">Iniciar  <i class="fa fa-plus"></i></div>
+		</div>
 	
-	
-		<ul>
-			<li class="selected"><a href="#">Menu Principal 1</a>
-				<ul>
-					<li><a href="#">Sub Menu 1</a></li>
-					<li><a href="#">Sub Menu 2</a></li>
-					<li><a href="#">Sub Menu 3</a>
+	    <ul>
+	    	<li ng-repeat="service in mainCtrl.services" class="selected"><a href="#">{{service.title}}</a>
+		    	<ul>
+					<li ng-repeat="subservice in service.subservices"><a href="#">{{subservice.name}}</a>
 						<ul>
-							<li><a href="#">Sub Sub Menu 1</a></li>
-							<li><a href="#">Sub Sub Menu 2</a></li>
-							<li><a href="#">Sub Sub Menu 3</a></li>
-							<li><a href="#">Sub Sub Menu 4</a></li>
-							<li><a href="#">Sub Sub Menu 5</a></li>
+							<li ng-repeat="subsubservice in subservice.subsubservices"><a href="#">{{subsubservice.name}}</a></li>
 						</ul>
 					</li>
-					<li><a href="#">Sub Menu 4</a></li>
-					<li><a href="#">Sub Menu 5</a></li>
 				</ul>
 			</li>
-			<li><a>Menu Principal 2</a>
-				<ul>
-					<li><a href="#">Sub Menu 1</a></li>
-					<li><a href="#">Sub Menu 2</a></li>
-					<li><a href="#">Sub Menu 3</a></li>
-					<li><a href="#">Sub Menu 4</a></li>
-					<li><a href="#">Sub Menu 5</a></li>
-				</ul>
-			</li>
-			<li><a href="#">Menu Principal 3</a></li>
-			<li><a href="#">Menu Principal 4</a>
-				<ul>
-					<li><a href="#">Sub Menu 1</a></li>
-					<li><a href="#">Sub Menu 2</a></li>
-					<li><a href="#">Sub Menu 3</a></li>
-					<li><a href="#">Sub Menu 4</a></li>
-					<li><a href="#">Sub Menu 5</a></li>
-				</ul>
-			</li>
-		</ul>
+		</ul>	
 	</nav>
 
 </div>
