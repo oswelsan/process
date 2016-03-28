@@ -1,10 +1,7 @@
-﻿
-
-
-<div id="outer-wrap">
+﻿<div id="outer-wrap">
   	
 	<!-- Navigation -->
-	<nav class="mainNav">
+	<nav class="mainNav" style="height:100%">
 		
 		<div class="w-clearfix verticalnavbarbutton" data-ix="mostrar-menu-de-iniciar">
 			<div class="servicebuttonlabel">Iniciar  <i class="fa fa-plus"></i></div>
@@ -20,9 +17,8 @@
 					</li>
 				</ul>
 			</li>
-		</ul>	
+		</ul>
 	</nav>
-
 </div>
 
 <script>
@@ -30,12 +26,14 @@
 		
 			//Accordion Nav
 			jQuery('.mainNav').navAccordion({
-				expandButtonText: '<i class="fa fa-plus"></i>',  //Text inside of buttons can be HTML
-				collapseButtonText: '<i class="fa fa-minus"></i>'
+				expandButtonText: '<i class="fa fa-chevron-down"></i>',  //Text inside of buttons can be HTML
+				collapseButtonText: '<i class="fa fa-chevron-up"></i>'
 			}, 
 			function(){
 				console.log('Callback')
 			});
+
+			$('#outer-wrap').css( "height", ($( window ).height()-50) );
 			
 		});
 </script>
