@@ -1,50 +1,41 @@
-<ul class="nav navbar-nav side-nav">
-    <li class="active">
-        <a href="index.html"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a>
-    </li>
-    <li>
-        <a href="charts.html"><i class="fa fa-fw fa-bar-chart-o"></i> Charts</a>
-    </li>
-    <li>
-        <a href="tables.html"><i class="fa fa-fw fa-table"></i> Tables</a>
-    </li>
-    <li>
-        <a href="forms.html"><i class="fa fa-fw fa-edit"></i> Forms</a>
-    </li>
-    <li>
-        <a href="bootstrap-elements.html"><i class="fa fa-fw fa-desktop"></i> Bootstrap Elements</a>
-    </li>
-    <li>
-        <a href="javascript:;" data-toggle="collapse" data-target="#demo3"><i class="fa fa-fw fa-arrows-v"></i> Bootstrap Elements 2 <i class="fa fa-fw fa-caret-down"></i></a>
-        <ul id="demo3" class="collapse">
-            <li>
-                <a href="#">Dropdown Item</a>
-            </li>
-        </ul>
-    </li>    
-    <li>
-        <a href="bootstrap-grid.html"><i class="fa fa-fw fa-wrench"></i> Bootstrap Grid</a>
-    </li>
-    <li>
-        <a href="javascript:;" data-toggle="collapse" data-target="#demo"><i class="fa fa-fw fa-arrows-v"></i> Dropdown <i class="fa fa-fw fa-caret-down"></i></a>
-        <ul id="demo" class="collapse">
-            <li>
-                <a href="#">Dropdown Item</a>
-            </li>
-            <li>
-                <a href="javascript:;" data-toggle="collapse" data-target="#demo2"><i class="fa fa-fw fa-arrows-v"></i> Dropdown Item<i class="fa fa-fw fa-caret-down"></i></a>
-		        <ul id="demo2" class="collapse">
-		            <li>
-		                <a href="#">Dropdown Item</a>
-		            </li>
-		        </ul>                
-            </li>
-        </ul>
-    </li>
-    <li>
-        <a href="blank-page.html"><i class="fa fa-fw fa-file"></i> Blank Page</a>
-    </li>
-    <li>
-        <a href="index-rtl.html"><i class="fa fa-fw fa-dashboard"></i> RTL Dashboard</a>
-    </li>
-</ul>
+﻿
+
+
+<div id="outer-wrap">
+  	
+	<!-- Navigation -->
+	<nav class="mainNav">
+		
+		<div class="w-clearfix verticalnavbarbutton" data-ix="mostrar-menu-de-iniciar">
+			<div class="servicebuttonlabel">Iniciar  <i class="fa fa-plus"></i></div>
+		</div>
+	
+	    <ul>
+	    	<li ng-repeat="service in mainCtrl.services" class="selected"><a href="#">{{service.title}}</a>
+		    	<ul>
+					<li ng-repeat="subservice in service.subservices"><a href="#">{{subservice.name}}</a>
+						<ul>
+							<li ng-repeat="subsubservice in subservice.subsubservices"><a href="#">{{subsubservice.name}}</a></li>
+						</ul>
+					</li>
+				</ul>
+			</li>
+		</ul>	
+	</nav>
+
+</div>
+
+<script>
+		jQuery(document).ready(function(){
+		
+			//Accordion Nav
+			jQuery('.mainNav').navAccordion({
+				expandButtonText: '<i class="fa fa-plus"></i>',  //Text inside of buttons can be HTML
+				collapseButtonText: '<i class="fa fa-minus"></i>'
+			}, 
+			function(){
+				console.log('Callback')
+			});
+			
+		});
+</script>

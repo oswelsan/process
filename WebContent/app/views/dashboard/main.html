@@ -1,19 +1,10 @@
- <div id="wrapper">
- 
-         <!-- Navigation -->
-        <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-
-        	 <div ui-view="header"/>
-
-	         <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
-			 <div ui-view="sidebar" class="collapse navbar-collapse navbar-ex1-collapse"/>
-        </nav>
-        
-        <div id="page-wrapper">
-            <div ui-view="container" class="container-fluid"/>
-        </div>    
+﻿<header ui-view="header" class="navbar navbar-bright navbar-fixed-top" role="banner"></header>
+<div class="container-fluid">
+    <div class="row">
+        <div ui-view="sidebar" class="col-md-2" id="leftCol"></div>
+        <div ui-view="container" class="col-md-10" id="mainCol"></div>
+    </div>
 </div>
-
 
 
 
