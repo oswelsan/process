@@ -1,11 +1,54 @@
 <div class="container-fluid">
-    <div class="navbar-header">
-        <a class="navbar-brand" ui-sref="root.environments">Process</a>
+    <div class="navbar-header" style="width:100%">
+    <table style="width: 100%">
+    	<tr>
+    		<td style="width: 10%">
+    			<a class="title-process navbar-brand" ui-sref="root.environments">Process</a>
+    		</td>
+    		<td style="text-align:right;padding-right: 10px;">
+    			<a id="profile" href="#modal-02">Luis Lozada <img width="50px" src="app/images/user_default.png"></a>
+    		</td>
+    	</tr>
+    </table>  
     </div>
+</div>
 
-    <div class="navbar-collapse" role="navigation" uib-collapse="mainCtrl.isCollapsed">
-        <ul class="nav navbar-nav">
-            <li><a ui-sref="root.tasks">Tasks</a></li>
+
+<script>
+	$("#profile").animatedModal({
+	    modalTarget:'modal-02',
+	    animatedIn:'lightSpeedIn',
+	    animatedOut:'bounceOutDown',
+	    color:'#E5DCDC',
+	    // Callbacks
+	    beforeOpen: function() {
+	        console.log("The animation was called");
+	    },           
+	    afterOpen: function() {
+	        console.log("The animation is completed");
+	    }, 
+	    beforeClose: function() {
+	        console.log("The animation was called");
+	    }, 
+	    afterClose: function() {
+	        console.log("The animation is completed");
+	    }
+	});
+
+</script>
+
+<div id="modal-02" style="margin-top: 51px;margin-left: 224px;">
+    <!--"THIS IS IMPORTANT! to close the modal, the class name has to match the name given on the ID-->
+    <div  id="btn-close-modal" class="close-modal-02"> 
+        Cerrar Ventana
+    </div>
+    
+    <div class="modal-content" style="color: black;">
+		<ul>
+	        <li>Editar Perfil</li>
+	        <li>Cambiar Contraseña</li>
+	        <li>Configurar Seguridad</li>
+	        <li  id="btn-close-modal">Salir</li>
         </ul>
     </div>
 </div>

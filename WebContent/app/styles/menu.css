@@ -39,6 +39,9 @@
 				.mainNav ul ul li {
 					background: #E4F0FB;
 				}
+				.mainNav ul ul li span{
+					background: #E4F0FB !important;
+				}
 				.mainNav ul ul li a {
 					color: #14304B;
 					display: block;
@@ -78,7 +81,7 @@
 				}
 			/* Accordion Button */
 			ul li.has-subnav .accordion-btn {
-				color:#fff; 
+				color:#14304b; 
 				background:#8FB9E2; font-size:16px;
 			}
 		

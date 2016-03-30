@@ -32,21 +32,29 @@ body {
 .navbar-bright {
 	background-color:#28639D;
     color:#fff;
-}
+} 
   
-.navbar-bright a, #masthead a, #masthead .lead {
-    color: white;
+.title-process {
     float: left;
     font-family: "PT Serif",serif;
     font-size: 24px;
     font-weight: 900;
-    height: 100%;
-    letter-spacing: 9px;
     max-height: 40px;
     padding-left: 30px;
     padding-top: 12px;
     text-align: left;
+}
+.navbar-bright a, #masthead a, #masthead .lead {
+    color: white;
+    font-family: Georgia,Times,"Times New Roman",serif;
+    font-weight: 900;
+    height: 100%;
+    letter-spacing: 9px;
     width: 100%;
+}
+
+.navbar-bright a:hover,#masthead a:hover {
+		text-decoration: none;
 }
 
 .navbar-bright li > a:hover {
