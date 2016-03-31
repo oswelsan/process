@@ -89,6 +89,7 @@
             deleteSession: deleteSession,
             //$tasks
             getTasks: getTasks,
+            getProfile: getProfile,
         };
 
         return engine;
@@ -214,6 +215,22 @@
 
          function getTasksFailed(error) {
              console.log("Failed to get tasks" + error.data);
+         }
+        }
+        
+        //$profile
+        function getProfile(id) {
+            return $http.get(API + '/profile' + '/' + id)
+             .then(getProfileComplete);
+             //.catch(getProfileFailed);
+
+         function getProfileComplete(response) {
+             console.log("Encontrado Process");
+             return response.data;
+         }
+
+         function getProfileFailed(error) {
+             console.log("Failed to get profile" + error.data);
          }
         }
     }

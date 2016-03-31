@@ -89,6 +89,16 @@
                 params: {
                     filter: null
                 }
+            })
+            .state('root.profile', {
+                url: '/profile',
+                views: {
+                    'container@root': {
+                        templateUrl: 'app/views/profile.html',
+                        controller: 'ProfileController',
+                        controllerAs: 'vm'
+                    }
+                }
             }); 
 
     }
