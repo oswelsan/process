@@ -6,31 +6,18 @@
 			</div>
 		</a>	  
     </li>
-    <li>
-        <a href="javascript:;" data-toggle="collapse" data-target="#demo3"><i class="fa fa-fw fa-arrows-v"></i> TRABAJO <i class="fa fa-fw fa-caret-down"></i></a>
-        <ul id="demo3" class="collapse">
-            <li>
-                <a href="#">Vencido</a>
-            </li>
-            <li>
-                <a href="#">En Riesgo</a>
-            </li>            
-        </ul>
-    </li>    
-    <li>
-        <a href="javascript:;" data-toggle="collapse" data-target="#demo"><i class="fa fa-fw fa-arrows-v"></i> CARTELERA <i class="fa fa-fw fa-caret-down"></i></a>
-        <ul id="demo" class="collapse">
-            <li>
-                <a href="#">Administracion de ambiente</a>
-            </li>
-            <li>
-                <a href="javascript:;" data-toggle="collapse" data-target="#demo2"><i class="fa fa-fw fa-arrows-v"></i> Alarmas<i class="fa fa-fw fa-caret-down"></i></a>
-		        <ul id="demo2" class="collapse">
-		            <li>
-		                <a href="#">Alarma1</a>
+    <li ng-repeat="service in mainCtrl.services">
+        <a href="javascript:;" data-toggle="collapse" data-target="#{{service.value}}"><i class="fa fa-fw fa-arrows-v"></i> {{service.title}} <i class="fa fa-fw fa-caret-down"></i></a>
+        <ul id="{{service.value}}" class="collapse">
+            <li ng-repeat="subservice in service.subservices">
+                <a href="javascript:;" data-toggle="collapse" data-target="#{{subservice.value}}"><i class="fa fa-fw fa-arrows-v"></i> {{subservice.name}}<i class="fa fa-fw fa-caret-down"></i></a>
+		        <ul id="{{subservice.value}}" class="collapse">
+		            <li ng-repeat="subsubservice in subservice.subsubservices">
+		                <a href="#">{{subsubservice.name}}</a>
 		            </li>
-		        </ul>                
+		        </ul>               
             </li>
         </ul>
-    </li>
+    </li>  
+
 </ul>
