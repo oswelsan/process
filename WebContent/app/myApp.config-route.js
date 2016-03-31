@@ -42,6 +42,16 @@
             })
             .state('root', {
                 url: '',
+                views: {
+                    '': {
+                        templateUrl: 'app/views/sessions.html',
+                        controller: 'SessionsController',
+                        controllerAs: 'vm'
+                    }
+                }
+            })
+            .state('dashboard', {
+                url: 'dashboard',
                 abstract: true,
                 views: {
                     '': {

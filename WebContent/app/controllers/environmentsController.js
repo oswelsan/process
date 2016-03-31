@@ -29,7 +29,6 @@
         }
 
         function setEnvironment(environment) {
-        	environment = "sql";
         	user.server = environment;
         }
     }

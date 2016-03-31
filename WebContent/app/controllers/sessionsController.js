@@ -18,19 +18,26 @@
         vm.loginRenew = loginRenew;
         vm.logout = logout;
         vm.response = {};
-
+        vm.environments = [];
+        setEnvironment("cnpmilitar");
         activate();
 
 
         function login() {
+        	
             processEngine.postSession(vm.user)
                 .then(function (data) {
-                	data.message === "15140";
-                    if (data.message === "15140") {
+                	if (data == null) {
+                        alert('Internal Error!')
+                        vm.isLogged = false;
+                    }else if (data.message === "15140") {
                         alert('Already Signed in!')
                         vm.isLogged = true;
-                    } else {
-                        alert('Signed in!')
+                    } else if(data.message === "25241154"){
+                    	alert('Session Dead!')
+                        vm.isLogged = false;
+                    }else{
+                    	alert('Signed in!')
                         user.name = vm.user.name;
                         user.pass = vm.user.pass;
                         $state.go('root.tasks');
@@ -67,7 +74,6 @@
                 .then(function (data) {
                     alert('Signed out!');
                     vm.response = data;
-                    $state.go('environments')
                     return vm.response;
                 })
         }
@@ -81,7 +87,7 @@
                 return vm.user.server;
             }
             else {
-                $state.go('environments');
+            	getEnvironments();
                 return false; 
             }
         }
@@ -94,10 +100,25 @@
                         return isVerified;
                     } else {
 
-                        $state.go('environments');
+                        getEnvironments();
                         return isVerified;
                     }
                 })
+        }
+        
+        function getEnvironments() {
+        	
+        	vm.environments = "cnpmilitar";
+        	return vm.environments;
+//            processEngine.getEnvironments()
+//                .then(function(data) {
+//                    vm.environments = data;
+//                    return vm.environments;
+//                });
+        }
+        
+        function setEnvironment(environment) {
+        	user.server = environment;
         }
     }
 })();

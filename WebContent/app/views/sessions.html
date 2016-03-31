@@ -38,10 +38,25 @@
 											<input style="width:100%;" type="password" ng-model="vm.user.pass" />
 										</td>
 									</tr>
-								</table>
-								 
+								</table> 
 							</td>
 						</tr>
+						<tr>
+							<td>
+								<table style="width:100%;text-align:left;margin-bottom: 5px;margin-top: 5px">
+									<tr>
+										<td style="width:20%;">
+											Ambiente:
+										</td>
+										<td>
+											<select  name="environments" id="environments" ng-options="environment.name for environment in vm.environments track by environment.name" ng-model="vm.selectedOption">
+							    			</select>
+										</td>
+									</tr>
+								</table>
+							</td>
+						</tr>
+						
 						<tr>
 							<td>
 		                        <button type="button"
