@@ -128,10 +128,10 @@
 
         //$sessions
         function getSession(user) {
-            return $http.get(API + '/sessions',
+            return $http.get(API + '/sessions/'+user.server,
             {
                 headers: {
-                    'Authorization': 'Basic ' + btoa(user.name + ':' + user.pass + ':' + user.envi)
+                    'Authorization': 'Basic ' + btoa(user.name + ':' + user.pass)
                 }
             })
                 .then(getSessionComplete);
@@ -168,10 +168,10 @@
         }
 
         function putSession(user) {
-            return $http.put(API + '/sessions','',
+            return $http.put(API + '/sessions/'+user.server,'',
             {
                 headers: {
-                    'Authorization': 'Basic ' + btoa(user.name + ':' + user.pass + ':' + user.envi)
+                    'Authorization': 'Basic ' + btoa(user.name + ':' + user.pass)
                 }
             })
                 .then(putSessionComplete);
