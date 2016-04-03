@@ -13,9 +13,6 @@
         vm.id = '1';
         vm.tasks = [];
         vm.displayedTasks = [].concat(vm.tasks);
-
-
-
         activate();
 
         function activate() {

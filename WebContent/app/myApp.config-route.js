@@ -10,85 +10,28 @@
         $urlRouterProvider.otherwise('/');
 
         $stateProvider
-            .state('environments', {
-                url: '/environments',
-                views: {
-                    '': {
-                        templateUrl: 'app/views/environments.html',
-                        controller: 'EnvironmentsController',
-                        controllerAs: 'vm'
-                    }
-                }
-            })
-            .state('login', {
-                url: '/login',
-                views: {
-                    '': {
-                        templateUrl: 'app/views/sessions.html',
-                        controller: 'SessionsController',
-                        controllerAs: 'vm'
-                    }
-                }
-            })
-            .state('login.environment', {
-                url: '/:environmentName',
-                views: {
-                    '': {
-                        templateUrl: 'app/views/sessions.html',
-                        controller: 'SessionsController',
-                        controllerAs: 'vm'
-                    }
-                }
-            })
             .state('root', {
                 url: '',
-                views: {
-                    '': {
-                        templateUrl: 'app/views/sessions.html',
-                        controller: 'SessionsController',
-                        controllerAs: 'vm'
-                    }
-                }
-            })
-            .state('dashboard', {
-                url: 'dashboard',
-                abstract: true,
+                abstract: true,    
                 views: {
                     '': {
                         templateUrl: 'app/views/dashboard/main.html',
                         controller: 'MainController',
-                        controllerAs: 'mainCtrl'
+                        controllerAs: 'vm'
                     },
                     'header@root':{
                         templateUrl: 'app/views/assets/header.html'
                     },
                     'sidebar@root':{
                         templateUrl: 'app/views/assets/sidebar.html'
-                    }
-                }
-            })
-            .state('root.environments', {
-                url: '/',
-                views: {
-                    'container@root': {
-                        templateUrl: 'app/views/environments.html',
-                        controller: 'EnvironmentsController',
-                        controllerAs: 'vm'
-                    }
-                }
-            })
-            .state('root.login', {
-                url: '/login',
-                views: {
-                    'container@root': {
-                        templateUrl: 'app/views/sessions.html',
-                        controller: 'SessionsController',
-                        controllerAs: 'vm'
+                    },
+                    'login@root':{
+                        templateUrl: 'app/views/login.html'
                     }
                 }
             })
             .state('root.tasks', {
-                url: '/tasks',
+                url: '/',
                 views:{
                     'container@root':{
                         templateUrl: 'app/views/tasks.html',

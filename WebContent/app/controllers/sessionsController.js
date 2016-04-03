@@ -24,7 +24,7 @@
 
 
         function login() {
-        	
+
             processEngine.postSession(vm.user)
                 .then(function (data) {
                 	if (data == null) {
@@ -40,13 +40,14 @@
                     	alert('Signed in!')
                         user.name = vm.user.name;
                         user.pass = vm.user.pass;
-                        $state.go('root.tasks');
+                        vm.isLogged = true;
+                        $state.go('root.task');
                     }
                     vm.response = data;
                     return vm.response;
                 });
         }
-
+        
         function loginRecover() {
             processEngine.getSession(vm.user)
                 .then(function (data) {

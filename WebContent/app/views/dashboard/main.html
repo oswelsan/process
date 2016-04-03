@@ -1,19 +1,20 @@
- <div id="wrapper">
- 
+	<!-- Login -->
+	<div ui-view="login" ng-show="!vm.isLogged" ></div>
+		
+	<div id="wrapper" ng-show="vm.isLogged">
+    
          <!-- Navigation -->
-        <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+     	<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
 
-        	 <div ui-view="header"/>
+     	 <div ui-view="header"></div>
 
-	         <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
-			 <div ui-view="sidebar" class="collapse navbar-collapse navbar-ex1-collapse"/>
+       	<!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
+			 <div ui-view="sidebar" class="collapse navbar-collapse navbar-ex1-collapse"></div>
         </nav>
         
         <div id="page-wrapper">
-            <div ui-view="container" class="container-fluid"/>
-        </div>    
-</div>
-
-
+            <div ui-view="container" class="container-fluid" ></div>
+        </div>      
+	</div>
 
 

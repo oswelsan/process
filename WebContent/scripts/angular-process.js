@@ -7,6 +7,7 @@
     angular
         .module('ngProcess')
         .constant('API', ' http://131.255.104.36:9092/process/api')
+        //.constant('API', ' http://demo3025227.mockable.io')
         .factory('ticketInterceptor', ticketInterceptor)
         .service('ticketService', ticketService)
         .factory('processEngine', processEngine)
@@ -96,7 +97,7 @@
 
         //$environments
         function getEnvironments() {
-        	return $http.get(API + '/environments').then(getEnvironmentsComplete);
+        	return $http.get(API + '/admin/environments').then(getEnvironmentsComplete);
             	//.catch(getEnvironmentsFailed);
 
             function getEnvironmentsComplete (response) {
@@ -146,12 +147,11 @@
             }
         }
 
-        function postSession(user) {
-            return $http.post(API + '/sessions/'+user.server,
+        function postSession(vm) {
+            return $http.post(API + '/sessions/'+vm.selectedOption.name,
                 '', {
                     headers: {
-                    	'Access-Control-Allow-Origin' : '*',
-                        'Authorization': 'Basic ' + btoa(user.name + ':' + user.pass)
+                        'Authorization': 'Basic ' + btoa(vm.user.name + ':' + vm.user.pass)
                     }
                 })
                 .then(postSessionComplete);
