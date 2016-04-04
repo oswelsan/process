@@ -19,13 +19,11 @@
         vm.logout = logout;
         vm.response = {};
         vm.environments = [];
-        setEnvironment("cnpmilitar");
         activate();
 
 
         function login() {
-
-            processEngine.postSession(vm.user)
+            processEngine.postSession(vm)
                 .then(function (data) {
                 	if (data == null) {
                         alert('Internal Error!')
@@ -40,8 +38,9 @@
                     	alert('Signed in!')
                         user.name = vm.user.name;
                         user.pass = vm.user.pass;
+                        user.envi = vm.user.envi;
                         vm.isLogged = true;
-                        $state.go('root.task');
+                        $state.go('root.main');
                     }
                     vm.response = data;
                     return vm.response;
@@ -109,13 +108,11 @@
         
         function getEnvironments() {
         	
-        	vm.environments = "cnpmilitar";
-        	return vm.environments;
-//            processEngine.getEnvironments()
-//                .then(function(data) {
-//                    vm.environments = data;
-//                    return vm.environments;
-//                });
+            processEngine.getEnvironments()
+                .then(function(data) {
+                    vm.environments = data;
+                    return vm.environments;
+                });
         }
         
         function setEnvironment(environment) {

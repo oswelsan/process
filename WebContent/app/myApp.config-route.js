@@ -10,28 +10,34 @@
         $urlRouterProvider.otherwise('/');
 
         $stateProvider
-            .state('root', {
-                url: '',
-                abstract: true,    
+	        .state('root', {
+	            url: '/',
+	            views:{
+	                '':{
+	                    templateUrl: 'app/views/login.html',
+	                    controller: 'SessionsController',
+	                    controllerAs: 'vm'
+	                }
+	            }
+	        })
+            .state('root.main', {
+                url: 'main',
                 views: {
                     '': {
                         templateUrl: 'app/views/dashboard/main.html',
                         controller: 'MainController',
-                        controllerAs: 'vm'
+                        controllerAs: 'main'
                     },
-                    'header@root':{
+                    'header@root.main':{
                         templateUrl: 'app/views/assets/header.html'
                     },
                     'sidebar@root':{
                         templateUrl: 'app/views/assets/sidebar.html'
-                    },
-                    'login@root':{
-                        templateUrl: 'app/views/login.html'
                     }
                 }
             })
             .state('root.tasks', {
-                url: '/',
+                url: 'task',
                 views:{
                     'container@root':{
                         templateUrl: 'app/views/tasks.html',
