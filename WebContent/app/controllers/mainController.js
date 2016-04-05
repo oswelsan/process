@@ -11,7 +11,6 @@
         var vm = this;
         vm.title = "Now Viewing home!";
         vm.isCollapsed = true;
-        alert("main");
         vm.services = [
         {
             title: "TRABAJO",
