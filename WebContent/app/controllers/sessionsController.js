@@ -10,7 +10,7 @@
     function SessionsController(processEngine, user, $state) {
         var vm = this;
 
-        vm.title = "Login"
+        vm.title = "Login";
         vm.user = { name: "", pass: "", envi: "" };
         vm.isLogged = processEngine.isLogged;
         vm.login = login;
@@ -26,16 +26,17 @@
             processEngine.postSession(vm)
                 .then(function (data) {
                 	if (data == null) {
-                        alert('Internal Error!')
+                        alert('Internal Error!');
                         vm.isLogged = false;
+                        
                     }else if (data.message === "15140") {
-                        alert('Already Signed in!')
+                        alert('Already Signed in!');
                         vm.isLogged = true;
                     } else if(data.message === "25241154"){
-                    	alert('Session Dead!')
+                    	alert('Session Dead!');
                         vm.isLogged = false;
                     }else{
-                    	alert('Signed in!')
+                    	alert('Signed in!');
                         user.name = vm.user.name;
                         user.pass = vm.user.pass;
                         user.envi = vm.user.envi;

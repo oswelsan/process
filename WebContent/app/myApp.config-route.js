@@ -27,11 +27,6 @@
                 	controller: 'MainController',
                     controllerAs: 'vm'
                 },
-                'sidebar@root': {
-                	templateUrl: 'app/views/assets/sidebar.html',
-                    controller: 'MainController',
-                    controllerAs: 'vm'
-                },
                 'container@root':{
                     templateUrl: 'app/views/tasks.html',
                     controller: 'TasksController',

@@ -113,5 +113,32 @@
          </ul>
      </li>
  </ul>
+ 
+  <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
+ <div class="collapse navbar-collapse navbar-ex1-collapse">
+<ul class="nav navbar-nav side-nav">
+    <li>
+        <a href="blank-page.html" class="center-block">
+        	<div class="w-clearfix verticalnavbarbutton" data-ix="mostrar-menu-de-iniciar">
+				<div class="btn btn-warning"><i class="fa fa-plus-circle"></i> Iniciar</div>
+			</div>
+		</a>	  
+    </li>
+    <li ng-repeat="service in vm.services">
+        <a href="javascript:;" data-toggle="collapse" data-target="#{{service.value}}"><i class="fa fa-chevron-down"></i> {{service.title}}</a>
+        <ul id="{{service.value}}" class="collapse">
+            <li ng-repeat="subservice in service.subservices">
+                <a href="javascript:;" data-toggle="collapse" data-target="#{{subservice.value}}"><i class="fa fa-chevron-down"></i> {{subservice.name}}</a>
+		        <ul id="{{subservice.value}}" class="collapse">
+		            <li ng-repeat="subsubservice in subservice.subsubservices">
+		                <a href="#">{{subsubservice.name}}</a>
+		            </li>
+		        </ul>               
+            </li>
+        </ul>
+    </li>  
+
+</ul>  
+</div>          
  </nav>
 </div>
