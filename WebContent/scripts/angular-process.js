@@ -1,5 +1,5 @@
 ﻿(function(){
-    'use strict'
+    'use strict';
 
     angular
     .module('ngProcess', []);
@@ -129,7 +129,7 @@
 
         //$sessions
         function getSession(user) {
-            return $http.get(API + '/sessions/'+user.server,
+            return $http.get(API + '/sessions/'+user.envi+'/sc/'+user.sc,
             {
                 headers: {
                     'Authorization': 'Basic ' + btoa(user.name + ':' + user.pass)
@@ -168,7 +168,7 @@
         }
 
         function putSession(user) {
-            return $http.put(API + '/sessions/'+user.server,'',
+            return $http.put(API + '/sessions/'+user.envi+'/sc/'+user.sc,'',
             {
                 headers: {
                     'Authorization': 'Basic ' + btoa(user.name + ':' + user.pass)
@@ -178,7 +178,7 @@
                 //.catch(putSessionFailed);
 
             function putSessionComplete(response) {
-                return response.data
+                return response.data;
             }
             
             function putSessionFailed(error) {
@@ -187,8 +187,8 @@
         }
 
         function deleteSession() {
-        	//return $http.delete(API + '/sessions')
-            //.then(deleteSessionComplete);
+//        	return $http.delete(API + '/sessions','')
+//            .then(deleteSessionComplete);
             //.catch(deleteSessionFailed);
 
             function deleteSessionComplete(response) {

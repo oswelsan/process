@@ -5,7 +5,7 @@
         .module('myApp')
         .controller('MainController', MainController);
 
-    MainController.$inject = ['processEngine','$scope','$state']
+    MainController.$inject = ['processEngine','$scope','$state'];
 
     function MainController(processEngine, $scope, $state){
         var vm = this;

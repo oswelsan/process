@@ -38,12 +38,21 @@
             url: '',
             views:{
                 'login@root':{
-                    templateUrl: 'app/views/login.html',
+                    templateUrl: 'app/views/sessions/login.html',
                     controller: 'SessionsController',
                     controllerAs: 'vm'
                 }
             }
-        }); 
+        })
+        .state('root.login.recuperate', {
+            views:{
+                'login@root':{
+                    templateUrl: 'app/views/sessions/recuperate.html',
+                    controller: 'SessionsController',
+                    controllerAs: 'vm'
+                }
+            }
+        });         
       }
 
 

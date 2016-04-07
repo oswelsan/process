@@ -17,6 +17,7 @@
         vm.loginRecover = loginRecover;
         vm.loginRenew = loginRenew;
         vm.logout = logout;
+        vm.back = back;
         vm.response = {};
         vm.environments = [];
         activate();
@@ -27,15 +28,16 @@
                 .then(function (data) {
                 	if (data == null) {
                         alert('Internal Error!');
-                        vm.isLogged = false;
-                        
-                    }else if (data.message === "15140") {
-                        alert('Already Signed in!');
+                        vm.isLogged = false;                        
+                    }else if (data.statusCode == "15140") {    
+                        user.name = vm.user.name;
+                        user.pass = vm.user.pass;
+                        user.envi = vm.selectedOption.name; 
+                        user.sc = data.sessionCaida;
                         vm.isLogged = true;
-                    } else if(data.message === "25241154"){
-                    	alert('Session Dead!');
-                        vm.isLogged = false;
-                    }else{
+                        // Preguntar al usuario si elimina o recupera la session
+                        $state.go('root.login.recuperate');
+                    }else{//TODO validar los otros tipos de errores en proceso de login        
                     	alert('Signed in!');
                         user.name = vm.user.name;
                         user.pass = vm.user.pass;
@@ -49,23 +51,27 @@
         }
         
         function loginRecover() {
-            processEngine.getSession(vm.user)
+            processEngine.getSession(user)
                 .then(function (data) {
-                    vm.response = data;
-                    user.name = vm.user.name;
-                    user.pass = vm.user.pass;
-                    $state.go('root.tasks');
+                	if (data.statusCode == "0"){
+                        vm.response = data;
+                        user.name = vm.user.name;
+                        user.pass = vm.user.pass;
+                        $state.go('root.main');                		
+                	}
                     return vm.response;
                 })
         }
 
         function loginRenew() {
-            processEngine.putSession(vm.user)
+            processEngine.putSession(user)
                 .then(function (data) {
-                    vm.response = data
-                    user.name = vm.user.name;
-                    user.pass = vm.user.pass;
-                    $state.go('root.tasks')
+                	if (data.statusCode == "0"){
+                        vm.response = data
+                        user.name = vm.user.name;
+                        user.pass = vm.user.pass;
+                        $state.go('root.main');
+                	}                    
                     return vm.response;
                 })
         }
@@ -78,6 +84,11 @@
                     return vm.response;
                 })
         }
+        
+        function back() {
+        	 alert(user.sc);
+        	 $state.go('root.login');
+        }        
 
         function activate() {
             if (!!$state.params.environmentName) {

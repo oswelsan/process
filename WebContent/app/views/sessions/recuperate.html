@@ -1,0 +1,28 @@
+
+	<div class="logo">
+		<!-- PUT YOUR LOGO HERE -->
+	</div>
+	<!-- END LOGO -->
+	<div class="content" style="width: 358px;">
+		<form class="form-vertical login-form" name="loginForm" action="" method="post">
+			<h3 class="form-title">Login</h3>
+			<div class="control-group">
+				<!--ie8, ie9 does not support html5 placeholder, so we just show field title for that-->
+				<div class="controls">
+					<p>Usted ya tiene una conexión establecida. ¿Que desea hacer?</p>
+				</div>
+			</div>
+			<div class="form-actions">
+				<button type="button" ng-click="vm.loginRenew()" class="btn blue">
+					Eliminar <i class="fa fa-sign-in"></i>
+				</button>
+				<button type="button" ng-click="vm.loginRecover()" class="btn blue">
+					Recuperar <i class="fa fa-sign-in"></i>
+				</button>							
+				<button type="button" ng-click="vm.back()" class="btn blue">
+					Volver <i class="fa fa-sign-in"></i>
+				</button>            
+			</div>
+		</form>     
+	</div>
+	
