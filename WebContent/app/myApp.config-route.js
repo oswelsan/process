@@ -24,7 +24,7 @@
             views: {
                 'header@root': {
                 	templateUrl: 'app/views/assets/header.html',
-                	controller: 'MainController',
+                	controller: 'SessionsController',
                     controllerAs: 'vm'
                 },
                 'container@root':{

@@ -5,9 +5,9 @@
         .module('myApp')
         .controller('SessionsController', SessionsController);
 
-    SessionsController.$inject = ['processEngine', 'user','$state'];
+    SessionsController.$inject = ['processEngine', 'user','$state','ticketService'];
 
-    function SessionsController(processEngine, user, $state) {
+    function SessionsController(processEngine, user, $state, ticketService) {
         var vm = this;
 
         vm.title = "Login";
@@ -18,6 +18,7 @@
         vm.loginRenew = loginRenew;
         vm.logout = logout;
         vm.back = back;
+        vm.services = [];
         vm.response = {};
         vm.environments = [];
         activate();
@@ -77,16 +78,22 @@
         }
 
         function logout() {
-            processEngine.deleteSession()
+        	if (ticketService.isAuthed()){        		
+                processEngine.deleteSession()
                 .then(function (data) {
                     alert('Signed out!');
-                    vm.response = data;
+                    vm.response = data;  
+                    if (data.statusCode == "0"){                    	 
+                        ticketService.saveTicket('');
+                        $state.go('root.login');
+                    }                     
                     return vm.response;
-                })
+                });
+
+        	}
         }
         
         function back() {
-        	 alert(user.sc);
         	 $state.go('root.login');
         }        
 
@@ -99,6 +106,9 @@
                 return vm.user.server;
             }
             else {
+            	if (ticketService.isAuthed()){
+            		getServices();
+            	}   
             	getEnvironments();
                 return false; 
             }
@@ -129,6 +139,71 @@
         
         function setEnvironment(environment) {
         	user.server = environment;
+        }
+        
+        function getServices() {
+            vm.services = [
+                           {
+                               title: "TRABAJO",
+                               value: "1",
+                               route: "root.tasks",
+                               subservices: [{
+                                   name: "Vencidos",
+                                   value: "11",
+                                   route: "root.tasks",
+                                   icon: "glyphicon glyphicon-alert text-danger",
+                                   subsubservices:[{
+                                   	name: "Vencidos 1",
+                                       value: "111",
+                                       route: "root.tasks",
+                                       icon: "glyphicon glyphicon-alert text-danger"
+                                   }, {
+                                   	name: "Vencidos 2",
+                                       value: "112",
+                                       route: "root.tasks",
+                                       icon: "glyphicon glyphicon-alert text-danger"
+                                   }]
+                               }, {
+                                   name: "En Riesgo",
+                                   value: "12",
+                                   route: "root.tasks",
+                                   icon: "glyphicon glyphicon-alert text-warning"
+                               }, {
+                                   name: "Vigentes",
+                                   value: "13",
+                                   route: "root.tasks",
+                                   icon: "glyphicon glyphicon-pencil text-primary"
+                               }]      
+                           },
+                           {
+                           	title: "CARTELERA",
+                           	value: "2",
+                           	route: "root.tasks",
+                           	subservices: [{
+                           	    name: "Alarmas",
+                           	    value: "21",
+                           	    route: "root.tasks",
+                           	    icon: "glyphicon glyphicon-alert text-danger",
+                           	    subsubservices:[{
+                           	    	name: "Alarma 1",
+                           	        value: "211",
+                           	        route: "root.tasks",
+                           	        icon: "glyphicon glyphicon-alert text-danger"
+                           	    }, {
+                           	    	name: "Alarma 2",
+                           	        value: "212",
+                           	        route: "root.tasks",
+                           	        icon: "glyphicon glyphicon-alert text-danger"
+                           	    }]
+                           	}, {
+                           	    name: "Administracion de ambiente",
+                           	    value: "22",
+                           	    route: "root.tasks",
+                           	    icon: "glyphicon glyphicon-alert text-warning"
+                           	}]      
+                           }
+                           
+                           ];          	
         }
     }
 })();

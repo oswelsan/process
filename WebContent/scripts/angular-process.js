@@ -20,15 +20,16 @@
         return {
             request: function (config) {
                 var ticket = ticketService.getTicket();
-                if (config.url.indexOf(API) === 0 && ticket && !config.headers.Authorization) {
+                if (config.url.indexOf(API) == 0 && ticket && !config.headers.Authorization) {
                     config.headers.Authorization = 'Bearer ' + ticket;
                 }
                 return config;
             },
 
-            response: function (res) {
-                if (res.config.url.indexOf(API) === 0 && res.headers('Authorization')) {
-                    ticketService.saveTicket(res.headers('Authorization'));
+            response: function (res) {			    
+				var ticket = res.data.ticket; 				
+                if (res.config.url.indexOf(API) == 0 && ticket) {                	
+                    ticketService.saveTicket(ticket);
                 }
                 return res;
             },
@@ -187,8 +188,8 @@
         }
 
         function deleteSession() {
-//        	return $http.delete(API + '/sessions','')
-//            .then(deleteSessionComplete);
+        	return $http.delete(API + '/sessions')
+            .then(deleteSessionComplete);
             //.catch(deleteSessionFailed);
 
             function deleteSessionComplete(response) {
