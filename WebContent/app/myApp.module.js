@@ -10,7 +10,7 @@
     ]);
 
    myApp.run(function (gettextCatalog) {
-	    gettextCatalog.currentLanguage = 'es';
+	    gettextCatalog.currentLanguage = 'en';
    });
 
 })();

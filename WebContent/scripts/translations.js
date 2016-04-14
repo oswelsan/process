@@ -5,7 +5,7 @@ angular.module('gettext').run(['gettextCatalog', function (gettextCatalog) {
     	"Username":"Usuario",
     	"Password":"Contraseña",
     	"Ok":"Acceder",
-    	"Select enviroment":"Seleccione el ambiente",
+    	"Select environment":"Seleccione el ambiente",
     	"Delete":"Eliminar",
     	"Recover":"Recuperar",
     	"Back":"Volver",
@@ -20,7 +20,21 @@ angular.module('gettext').run(['gettextCatalog', function (gettextCatalog) {
     });
     
     gettextCatalog.setStrings('en', {
-    		"Login":"Login",
-    		"Username":"Username"
+    	"Login":"Login",
+    	"Username":"Username",
+    	"Password":"Password",
+    	"Ok":"Ok",
+    	"Select environment":"Select environment",
+    	"Delete":"Delete",
+    	"Recover":"Recover",
+    	"Back":"Back",
+    	"You already have an established connection. What would you like to do?":"You already have an established connection. What would you like to do?",
+    	"Sent by":"Sent by",
+    	"Role":"Role",
+    	"Workflow":"Workflow",
+    	"Detail":"Detail",
+    	"Date":"Date",
+    	"Time":"Time",
+    	"global search":"global search"
     });
 }]);
