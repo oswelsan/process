@@ -9,18 +9,18 @@
 			<div class="control-group">
 				<!--ie8, ie9 does not support html5 placeholder, so we just show field title for that-->
 				<div class="controls">
-					<p>Usted ya tiene una conexión establecida. ¿Que desea hacer?</p>
+					<p traslate>You already have an established connection. What would you like to do?</p>
 				</div>
 			</div>
 			<div class="form-actions">
 				<button type="button" ng-click="vm.loginRenew()" class="btn blue">
-					Eliminar <i class="fa fa-sign-in"></i>
+					{{ 'Delete' | translate }} <i class="fa fa-sign-in"></i>
 				</button>
 				<button type="button" ng-click="vm.loginRecover()" class="btn blue">
-					Recuperar <i class="fa fa-sign-in"></i>
+					{{ 'Recover' | translate }} <i class="fa fa-sign-in"></i>
 				</button>							
 				<button type="button" ng-click="vm.back()" class="btn blue">
-					Volver <i class="fa fa-sign-in"></i>
+					{{ 'Back' | translate }} <i class="fa fa-sign-in"></i>
 				</button>            
 			</div>
 		</form>     
