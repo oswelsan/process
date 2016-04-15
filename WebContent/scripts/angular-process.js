@@ -6,7 +6,7 @@
     
     angular
         .module('ngProcess')
-        .constant('API', ' http://131.255.104.36:9092/process/api')
+        .constant('API', 'http://131.255.104.36:9092/process/api')
         //.constant('API', ' http://demo3025227.mockable.io')
         .factory('ticketInterceptor', ticketInterceptor)
         .service('ticketService', ticketService)

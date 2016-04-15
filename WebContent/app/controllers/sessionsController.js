@@ -39,7 +39,6 @@
                         // Preguntar al usuario si elimina o recupera la session
                         $state.go('root.login.recuperate');
                     }else{//TODO validar los otros tipos de errores en proceso de login        
-                    	alert('Signed in!');
                         user.name = vm.user.name;
                         user.pass = vm.user.pass;
                         user.envi = vm.user.envi;
@@ -81,7 +80,6 @@
         	if (ticketService.isAuthed()){        		
                 processEngine.deleteSession()
                 .then(function (data) {
-                    alert('Signed out!');
                     vm.response = data;  
                     if (data.statusCode == "0"){                    	 
                         ticketService.saveTicket('');
@@ -102,14 +100,20 @@
                return verifyEnvironment();
             }
             if (!!user.server) {
+            	
                 vm.user.server = user.server;
                 return vm.user.server;
             }
             else {
             	if (ticketService.isAuthed()){
             		getServices();
-            	}   
-            	getEnvironments();
+            	}else{
+            		if ($state.current.name!="root.login"){
+            			$state.go('root.login');
+            		}
+                	ticketService.delTicket();
+                	getEnvironments();            		
+            	}
                 return false; 
             }
         }
