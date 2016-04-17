@@ -106,13 +106,19 @@
             }
             else {
             	if (ticketService.isAuthed()){
+					if ($state.current.name!="root.main"){
+						ticketService.delTicket();
+						$state.go('root.login');
+					}
             		getServices();
             	}else{
-            		if ($state.current.name!="root.login"){
-            			$state.go('root.login');
-            		}
-                	ticketService.delTicket();
-                	getEnvironments();            		
+					if ($state.current.name!="root.login.recuperate"){
+						if ($state.current.name!="root.login"){
+							$state.go('root.login');
+						}
+						ticketService.delTicket();
+						getEnvironments();					
+					}            		
             	}
                 return false; 
             }
