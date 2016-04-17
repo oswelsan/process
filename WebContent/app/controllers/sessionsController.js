@@ -18,6 +18,7 @@
         vm.loginRenew = loginRenew;
         vm.logout = logout;
         vm.back = back;
+        vm.goServices = goServices;
         vm.services = [];
         vm.response = {};
         vm.environments = [];
@@ -93,7 +94,11 @@
         
         function back() {
         	 $state.go('root.login');
-        }        
+        }
+        
+        function goServices(){
+        	 $state.go('root.main.service');
+        }
 
         function activate() {
             if (!!$state.params.environmentName) {

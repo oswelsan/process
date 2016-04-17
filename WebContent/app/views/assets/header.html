@@ -108,7 +108,7 @@
              </li>
              <li class="divider"></li>
              <li>
-                 <a ng-click="vm.logout();"><i class="fa fa-fw fa-power-off"></i> Log Out</a>
+                 <a href="javascript:;" ng-click="vm.logout();"><i class="fa fa-fw fa-power-off"></i> Log Out</a>
              </li>
          </ul>
      </li>
@@ -118,7 +118,7 @@
  <div class="collapse navbar-collapse navbar-ex1-collapse">
 <ul class="nav navbar-nav side-nav">
     <li>
-        <a href="blank-page.html" class="center-block">
+        <a ng-click="vm.goServices();" class="center-block">
         	<div class="w-clearfix verticalnavbarbutton" data-ix="mostrar-menu-de-iniciar">
 				<div class="btn btn-warning"><i class="fa fa-plus-circle"></i> Iniciar</div>
 			</div>

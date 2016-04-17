@@ -34,6 +34,15 @@
                 }
             }
         })
+        .state('root.main.service', {
+            views: {
+                'container@root':{
+                    templateUrl: 'app/views/service.html',
+                    controller: 'ServiceController',
+                    controllerAs: 'vm'
+                }
+            }
+        })        
         .state('root.login', {
             url: '',
             views:{

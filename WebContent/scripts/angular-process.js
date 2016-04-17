@@ -89,6 +89,8 @@
             postSession: postSession,
             putSession: putSession,
             deleteSession: deleteSession,
+            //services
+            getServices: getServices,
             //$tasks
             getTasks: getTasks,
             getProfile: getProfile,
@@ -233,6 +235,22 @@
              console.log("Failed to get profile" + error.data);
          }
         }
+        
+        //services
+        function getServices() {
+            return $http.get(API + '/service')
+             .then(getServicesComplete);
+             //.catch(getServicesFailed);
+
+         function getServicesComplete(response) {
+             return response.data;
+         }
+
+         function getServicesFailed(error) {
+             console.log("Failed to get services" + error.data);
+             return error.data;
+         }
+        }        
     }
 
 
