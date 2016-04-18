@@ -40,16 +40,28 @@
     <script type="text/javascript" src="scripts/angular-gettext.min.js"></script>
     <script type="text/javascript" src="scripts/translations.js"></script>
     <script type="text/javascript" src="scripts/angular-block-ui.js"></script>
+    
+    <script type="text/javascript" src="scripts/sprintf.js"></script>
+    <script type="text/javascript" src="scripts/jspdf.js"></script>
+    <script type="text/javascript" src="scripts/base64.js"></script>
+    <script type="text/javascript" src="scripts/tableExport.js"></script>
 
 	<script>
 		jQuery(document).ready(function() {     
 		  //App.init();
 		  Login.init();	  
 		});
+		
+		function exportar(){
+			$('#pdf-export').tableExport({type:'pdf',escape:'false',pdfFontSize:'12'});
+		}
+		
+		
+		
 	</script>
 </head>
-<body ng-app="myApp" class="login">
-        <section ui-view></section>
+<body ng-app="myApp" class="login" >
+        <section ui-view ></section>
 </body>
 
 </html>

@@ -1,6 +1,6 @@
- <div id="wrapper">
+ <div id="wrapper" >
 <div id="page-wrapper">
-<table st-safe-src="vm.tasks" st-table="vm.displayedTasks" class="table table-hover">
+<table id="pdf-export" st-safe-src="vm.tasks" st-table="vm.displayedTasks" class="table table-hover">
     <thead>
         <tr>
             <th>
@@ -29,5 +29,6 @@
         </tr>
     </tbody>
 </table>
+<input type="button" onclick="exportar()" value ="EXPORTAR PDF">
 </div>
 </div>
