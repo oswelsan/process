@@ -22,14 +22,18 @@
         vm.services = [];
         vm.response = {};
         vm.environments = [];
+        vm.showError = false;
+        vm.messageError = "";
         activate();
 
 
         function login() {
             processEngine.postSession(vm)
                 .then(function (data) {
+                	data = null;
                 	if (data == null) {
-                        alert('Internal Error!');
+                        vm.messageError = processEngine.getMessageError(20000);
+                        vm.showError= true;
                         vm.isLogged = false;                        
                     }else if (data.statusCode == "15140") {    
                         user.name = vm.user.name;
