@@ -95,6 +95,7 @@
             getTasks: getTasks,
             getProfile: getProfile,
             getMessageError: getMessageError,
+            getMenuFile:getMenuFile,
         };
 
         return engine;
@@ -211,14 +212,14 @@
              .then(getTasksComplete);
              //.catch(getTasksFailed);
 
-         function getTasksComplete(response) {
-             console.log("Encontrado Process");
-             return response.data;
-         }
-
-         function getTasksFailed(error) {
-             console.log("Failed to get tasks" + error.data);
-         }
+	         function getTasksComplete(response) {
+	             console.log("Encontrado Process");
+	             return response.data;
+	         }
+	
+	         function getTasksFailed(error) {
+	             console.log("Failed to get tasks" + error.data);
+	         }
         }
         
         //$profile
@@ -227,14 +228,14 @@
              .then(getProfileComplete);
              //.catch(getProfileFailed);
 
-         function getProfileComplete(response) {
-             console.log("Encontrado Process");
-             return response.data;
-         }
-
-         function getProfileFailed(error) {
-             console.log("Failed to get profile" + error.data);
-         }
+	         function getProfileComplete(response) {
+	             console.log("Encontrado Process");
+	             return response.data;
+	         }
+	
+	         function getProfileFailed(error) {
+	             console.log("Failed to get profile" + error.data);
+	         }
         }
         
         //services
@@ -243,15 +244,55 @@
              .then(getServicesComplete);
              //.catch(getServicesFailed);
 
-         function getServicesComplete(response) {
-             return response.data;
-         }
+	         function getServicesComplete(response) {
+	             return response.data;
+	         }
+	
+	         function getServicesFailed(error) {
+	             console.log("Failed to get services" + error.data);
+	             return error.data;
+	         }
+        }
+        
+        function getMenuFile(vm){
+        	//alert(vm.user.name);
+            return $http.get(API + '/file',
+                    {
+                        headers: {
+                            'Authorization': 'Basic ' + btoa(vm.user.name + ':' + vm.user.pass)
+                        }
+                    })
+                        .then(getMenuFileComplete);
+                        //.catch(getMenuFileFailed);
 
-         function getServicesFailed(error) {
-             console.log("Failed to get services" + error.data);
-             return error.data;
-         }
-        } 
+                    function getMenuFileComplete(response){
+                        return response.data;
+                    }
+
+                    function getMenuFileFailed(error) {
+                        return error.data;
+                    }
+        }
+        
+        function getMenuReport(vm){
+        	//alert(vm.user.name);
+            return $http.get(API + '/report',
+                    {
+                        headers: {
+                            'Authorization': 'Basic ' + btoa(vm.user.name + ':' + vm.user.pass)
+                        }
+                    })
+                        .then(getMenuReportComplete);
+                        //.catch(getMenuReportFailed);
+
+                    function getMenuReportComplete(response){
+                        return response.data;
+                    }
+
+                    function getMenuReportFailed(error) {
+                        return error.data;
+                    }
+        }
         
         function getMessageError(key) {
         	var obj = {

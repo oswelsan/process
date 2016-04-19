@@ -120,18 +120,31 @@
     <li>
         <a ng-click="vm.goServices();" class="center-block">
         	<div class="w-clearfix verticalnavbarbutton" data-ix="mostrar-menu-de-iniciar">
-				<div class="btn btn-warning"><i class="fa fa-plus-circle"></i> Iniciar</div>
+				<div class="btn btn-warning"><i class="fa fa-plus-circle"></i> {{ 'Start' | translate }}</div>
 			</div>
 		</a>	  
     </li>
-    <li ng-repeat="service in vm.services">
-        <a href="javascript:;" data-toggle="collapse" data-target="#{{service.value}}"><i class="fa fa-chevron-down"></i> {{service.title}}</a>
-        <ul id="{{service.value}}" class="collapse">
-            <li ng-repeat="subservice in service.subservices">
-                <a href="javascript:;" data-toggle="collapse" data-target="#{{subservice.value}}"><i class="fa fa-chevron-down"></i> {{subservice.name}}</a>
-		        <ul id="{{subservice.value}}" class="collapse">
-		            <li ng-repeat="subsubservice in subservice.subsubservices">
-		                <a href="#">{{subsubservice.name}}</a>
+    <li ng-repeat="menuReport in vm.menuReport">
+        <a href="javascript:;" data-toggle="collapse" data-target="#rep-{{menuReport.wf}}"><i class="fa fa-chevron-down"></i> {{menuReport.nombre}}</a>
+        <ul id="rep-{{menuReport.wf}}" class="collapse">
+            <li ng-repeat="submenu in menuReport.childrens">
+                <a href="javascript:;" data-toggle="collapse" data-target="#rep-{{submenu.wf}}"><i class="fa fa-chevron-down"></i> {{submenu.nombre}}</a>
+		        <ul id="rep-{{submenu.wf}}" class="collapse">
+		            <li ng-repeat="subsubmenu in submenu.childrens">
+		                <a href="#">{{subsubmenu.nombre}}</a>
+		            </li>
+		        </ul>               
+            </li>
+        </ul>
+    </li>
+    <li ng-repeat="menuFile in vm.menuFile">
+        <a href="javascript:;" data-toggle="collapse" data-target="#fil-{{menuFile.wf}}"><i class="fa fa-chevron-down"></i> {{menuFile.nombre}}</a>
+        <ul id="fil-{{menuFile.wf}}" class="collapse">
+            <li ng-repeat="submenu in menuFile.childrens">
+                <a href="javascript:;" data-toggle="collapse" data-target="#fil-{{submenu.wf}}"><i class="fa fa-chevron-down"></i> {{submenu.nombre}}</a>
+		        <ul id="fil-{{submenu.wf}}" class="collapse">
+		            <li ng-repeat="subsubmenu in submenu.childrens">
+		                <a href="#">{{subsubmenu.nombre}}</a>
 		            </li>
 		        </ul>               
             </li>

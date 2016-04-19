@@ -9,6 +9,7 @@ angular.module('gettext').run(['gettextCatalog', function (gettextCatalog) {
     	"Select environment":"Seleccione el ambiente",
     	"Delete":"Eliminar",
     	"Recover":"Recuperar",
+    	"Start":"Iniciar",
     	"Back":"Volver",
     	"Sent by":"Enviado por",
     	"Role":"Rol",
