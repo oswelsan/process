@@ -96,6 +96,7 @@
             getProfile: getProfile,
             getMessageError: getMessageError,
             getMenuFile:getMenuFile,
+            getMenuReport:getMenuReport,
         };
 
         return engine;
@@ -223,19 +224,24 @@
         }
         
         //$profile
-        function getProfile(id) {
-            return $http.get(API + '/profile' + '/' + id)
-             .then(getProfileComplete);
-             //.catch(getProfileFailed);
+        function getProfile(user) {
+        	alert(vm.user.name);
+            return $http.get(API + '/profile/'+PRUEBA2,
+                    {
+                        headers: {
+                            'Authorization': 'Basic ' + btoa('PRUEBA2' + ':' + 'PRUEBA2')
+                        }
+                    })
+                        .then(getProfileComplete);
+                        //.catch(getProfileFailed);
 
-	         function getProfileComplete(response) {
-	             console.log("Encontrado Process");
-	             return response.data;
-	         }
-	
-	         function getProfileFailed(error) {
-	             console.log("Failed to get profile" + error.data);
-	         }
+                    function getProfileComplete(response){
+                        return response.data;
+                    }
+
+                    function getProfileFailed(error) {
+                        return error.data;
+                    }
         }
         
         //services
@@ -254,18 +260,13 @@
 	         }
         }
         
-        function getMenuFile(vm){
-        	//alert(vm.user.name);
-            return $http.get(API + '/file',
-                    {
-                        headers: {
-                            'Authorization': 'Basic ' + btoa(vm.user.name + ':' + vm.user.pass)
-                        }
-                    })
+        function getMenuFile(){
+            return $http.get(API + '/file')
                         .then(getMenuFileComplete);
                         //.catch(getMenuFileFailed);
 
                     function getMenuFileComplete(response){
+                    	getMenuReport();
                         return response.data;
                     }
 
@@ -274,18 +275,13 @@
                     }
         }
         
-        function getMenuReport(vm){
-        	//alert(vm.user.name);
-            return $http.get(API + '/report',
-                    {
-                        headers: {
-                            'Authorization': 'Basic ' + btoa(vm.user.name + ':' + vm.user.pass)
-                        }
-                    })
+        function getMenuReport(){
+            return $http.get(API + '/report')
                         .then(getMenuReportComplete);
                         //.catch(getMenuReportFailed);
 
                     function getMenuReportComplete(response){
+                    	//alert(response.data);
                         return response.data;
                     }
 

@@ -160,163 +160,165 @@
         }
         
         function getMenu() {
-        	getMenuReport();
-        	getMenuFile(); 	         	
+        	getMenuFile();
+        	
+ 	         	
         }
         
         function getMenuReport(){
-        	//var menuReport = processEngine.getMenuReport(vm);
-
-        	var menuReporte = [{
-        	    "nombre": "Administración de solución",
-        	    "wf": 1,
-        	    "tipo": null,
-        	    "childrens": [{
-        	        "nombre": "Grupos",
-        	        "wf": 1,
-        	        "tipo": "E",
-        	        "childrens": []
-        	    }, {
-        	        "nombre": "Inscripción en perfiles",
-        	        "wf": 1,
-        	        "tipo": "E",
-        	        "childrens": []
-        	    }, {
-        	        "nombre": "Inscripción en procesos",
-        	        "wf": 1,
-        	        "tipo": "E",
-        	        "childrens": []
-        	    }, {
-        	        "nombre": "Procesos",
-        	        "wf": 1,
-        	        "tipo": "E",
-        	        "childrens": []
-        	    }, {
-        	        "nombre": "Procesos sin perfil asignado",
-        	        "wf": 1,
-        	        "tipo": "E",
-        	        "childrens": []
-        	    }, {
-        	        "nombre": "Reemplazos",
-        	        "wf": 1,
-        	        "tipo": "E",
-        	        "childrens": []
-        	    }]
-        	}, {
-        	    "nombre": "Alarmas",
-        	    "wf": 40,
-        	    "tipo": null,
-        	    "childrens": [{
-        	        "nombre": "Alarmas ejecutadas",
-        	        "wf": 40,
-        	        "tipo": "E",
-        	        "childrens": []
-        	    }]
-        	}, {
-        	    "nombre": "Reportes de gestión",
-        	    "wf": 28,
-        	    "tipo": null,
-        	    "childrens": [{
-        	        "nombre": "Atención x Expediente",
-        	        "wf": 28,
-        	        "tipo": "E",
-        	        "childrens": []
-        	    }, {
-        	        "nombre": "Cantidad de Exp. x Actividad",
-        	        "wf": 28,
-        	        "tipo": "G",
-        	        "childrens": []
-        	    }, {
-        	        "nombre": "Cantidad de Exp. x Usuario",
-        	        "wf": 28,
-        	        "tipo": "G",
-        	        "childrens": []
-        	    }, {
-        	        "nombre": "Resumen de Cantidad",
-        	        "wf": 28,
-        	        "tipo": "G",
-        	        "childrens": []
-        	    }, {
-        	        "nombre": "Resumen de operación",
-        	        "wf": 28,
-        	        "tipo": "E",
-        	        "childrens": []
-        	    }, {
-        	        "nombre": "Resumen de tiempo",
-        	        "wf": 28,
-        	        "tipo": "G",
-        	        "childrens": []
-        	    }, {
-        	        "nombre": "Tiempo de atención x Actividad",
-        	        "wf": 28,
-        	        "tipo": "G",
-        	        "childrens": []
-        	    }, {
-        	        "nombre": "Tiempo de atención x Usuario",
-        	        "wf": 28,
-        	        "tipo": "G",
-        	        "childrens": []
-        	    }, {
-        	        "nombre": "Tiempo de servicio x Actividad",
-        	        "wf": 28,
-        	        "tipo": "G",
-        	        "childrens": []
-        	    }, {
-        	        "nombre": "Tiempo de servicio x Usuario",
-        	        "wf": 28,
-        	        "tipo": "G",
-        	        "childrens": []
-        	    }]
-        	}];
+        	var menuReport = processEngine.getMenuReport();
+        	//alert(menuReport);
+//        	var menuReporte = [{
+//        	    "nombre": "Administración de solución",
+//        	    "wf": 1,
+//        	    "tipo": null,
+//        	    "childrens": [{
+//        	        "nombre": "Grupos",
+//        	        "wf": 1,
+//        	        "tipo": "E",
+//        	        "childrens": []
+//        	    }, {
+//        	        "nombre": "Inscripción en perfiles",
+//        	        "wf": 1,
+//        	        "tipo": "E",
+//        	        "childrens": []
+//        	    }, {
+//        	        "nombre": "Inscripción en procesos",
+//        	        "wf": 1,
+//        	        "tipo": "E",
+//        	        "childrens": []
+//        	    }, {
+//        	        "nombre": "Procesos",
+//        	        "wf": 1,
+//        	        "tipo": "E",
+//        	        "childrens": []
+//        	    }, {
+//        	        "nombre": "Procesos sin perfil asignado",
+//        	        "wf": 1,
+//        	        "tipo": "E",
+//        	        "childrens": []
+//        	    }, {
+//        	        "nombre": "Reemplazos",
+//        	        "wf": 1,
+//        	        "tipo": "E",
+//        	        "childrens": []
+//        	    }]
+//        	}, {
+//        	    "nombre": "Alarmas",
+//        	    "wf": 40,
+//        	    "tipo": null,
+//        	    "childrens": [{
+//        	        "nombre": "Alarmas ejecutadas",
+//        	        "wf": 40,
+//        	        "tipo": "E",
+//        	        "childrens": []
+//        	    }]
+//        	}, {
+//        	    "nombre": "Reportes de gestión",
+//        	    "wf": 28,
+//        	    "tipo": null,
+//        	    "childrens": [{
+//        	        "nombre": "Atención x Expediente",
+//        	        "wf": 28,
+//        	        "tipo": "E",
+//        	        "childrens": []
+//        	    }, {
+//        	        "nombre": "Cantidad de Exp. x Actividad",
+//        	        "wf": 28,
+//        	        "tipo": "G",
+//        	        "childrens": []
+//        	    }, {
+//        	        "nombre": "Cantidad de Exp. x Usuario",
+//        	        "wf": 28,
+//        	        "tipo": "G",
+//        	        "childrens": []
+//        	    }, {
+//        	        "nombre": "Resumen de Cantidad",
+//        	        "wf": 28,
+//        	        "tipo": "G",
+//        	        "childrens": []
+//        	    }, {
+//        	        "nombre": "Resumen de operación",
+//        	        "wf": 28,
+//        	        "tipo": "E",
+//        	        "childrens": []
+//        	    }, {
+//        	        "nombre": "Resumen de tiempo",
+//        	        "wf": 28,
+//        	        "tipo": "G",
+//        	        "childrens": []
+//        	    }, {
+//        	        "nombre": "Tiempo de atención x Actividad",
+//        	        "wf": 28,
+//        	        "tipo": "G",
+//        	        "childrens": []
+//        	    }, {
+//        	        "nombre": "Tiempo de atención x Usuario",
+//        	        "wf": 28,
+//        	        "tipo": "G",
+//        	        "childrens": []
+//        	    }, {
+//        	        "nombre": "Tiempo de servicio x Actividad",
+//        	        "wf": 28,
+//        	        "tipo": "G",
+//        	        "childrens": []
+//        	    }, {
+//        	        "nombre": "Tiempo de servicio x Usuario",
+//        	        "wf": 28,
+//        	        "tipo": "G",
+//        	        "childrens": []
+//        	    }]
+//        	}];
         	
+        	//alert(menuReporte);
             vm.menuReport = [
                            	{
                         	   "nombre": "Reportes",
                                "wf": 1,
                                "tipo":null,
-                        	   "childrens":menuReporte
+                        	   "childrens":+menuReporte
                            	}          
           ]; 
         }
         
         function getMenuFile(){
-        	//var menuArchivo = processEngine.getMenuFile(vm);
-
-        	var menuArchivo = [{
-        	    "nombre": "Administración de solución",
-        	    "wf": 2,
-        	    "tipo": null,
-        	    "childrens": [{
-        	        "nombre": "Modificar perfil",
-        	        "wf": 3,
-        	        "tipo": "V",
-        	        "childrens": []
-        	    }, {
-        	        "nombre": "Modificar usuario",
-        	        "wf": 4,
-        	        "tipo": "V",
-        	        "childrens": []
-        	    }]
-        	}, {
-        	    "nombre": "Alarmas",
-        	    "wf": 40,
-        	    "tipo": null,
-        	    "childrens": [{
-        	        "nombre": "Modificar alarma",
-        	        "wf": 40,
-        	        "tipo": "V",
-        	        "childrens": []
-        	    }]
-        	}];
+        	var menuArchivo = processEngine.getMenuFile();
+        	//alert(menuArchivo);
+//        	var menuArchivo = [{
+//        	    "nombre": "Administración de solución",
+//        	    "wf": 2,
+//        	    "tipo": null,
+//        	    "childrens": [{
+//        	        "nombre": "Modificar perfil",
+//        	        "wf": 3,
+//        	        "tipo": "V",
+//        	        "childrens": []
+//        	    }, {
+//        	        "nombre": "Modificar usuario",
+//        	        "wf": 4,
+//        	        "tipo": "V",
+//        	        "childrens": []
+//        	    }]
+//        	}, {
+//        	    "nombre": "Alarmas",
+//        	    "wf": 40,
+//        	    "tipo": null,
+//        	    "childrens": [{
+//        	        "nombre": "Modificar alarma",
+//        	        "wf": 40,
+//        	        "tipo": "V",
+//        	        "childrens": []
+//        	    }]
+//        	}];
         	
-            vm.menuFile = [
-                           	{
-                        	   "nombre": "Archivos",
-                               "wf": 1,
-                               "tipo":null,
-                        	   "childrens":menuArchivo
-                           	}          
-          ]; 
+//            vm.menuFile = [
+//                           	{
+//                        	   "nombre": "Archivos",
+//                               "wf": 1,
+//                               "tipo":null,
+//                        	   "childrens":+menuArchivo
+//                           	}          
+//          ]; 
         }
     }
 })();
