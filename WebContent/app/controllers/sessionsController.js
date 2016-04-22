@@ -13,6 +13,8 @@
         vm.title = "Login";
         vm.user = { name: "", pass: "", envi: "" };
         vm.isLogged = processEngine.isLogged;
+        vm.isShowMenuFile = false;
+        vm.isShowMenuReport = false;
         vm.login = login;
         vm.loginRecover = loginRecover;
         vm.loginRenew = loginRenew;
@@ -160,14 +162,31 @@
         }
         
         function getMenu() {
-        	getMenuFile();
-        	
- 	         	
+        	processEngine.getMenuFile()
+        	.then(function (respuesta) {
+        		if(respuesta==''){
+        			vm.isShowMenuFile = false;
+        		}else{
+            		vm.isShowMenuFile = true;
+            		vm.menuFile = respuesta;    		
+        		}
+        		
+                processEngine.getMenuReport()
+                .then(function (respuesta) {
+                	if(respuesta==''){
+            			vm.isShowMenuReport = false;
+            		}else{
+                		vm.isShowMenuReport = true;
+                		vm.menuReport = respuesta;    		
+            		}
+                })
+            })
+            
+
         }
         
         function getMenuReport(){
-        	var menuReport = processEngine.getMenuReport();
-        	//alert(menuReport);
+        	var menuReporte = processEngine.getMenuReport(vm);
 //        	var menuReporte = [{
 //        	    "nombre": "Administración de solución",
 //        	    "wf": 1,
@@ -271,54 +290,14 @@
 //        	}];
         	
         	//alert(menuReporte);
-            vm.menuReport = [
-                           	{
-                        	   "nombre": "Reportes",
-                               "wf": 1,
-                               "tipo":null,
-                        	   "childrens":+menuReporte
-                           	}          
-          ]; 
-        }
-        
-        function getMenuFile(){
-        	var menuArchivo = processEngine.getMenuFile();
-        	//alert(menuArchivo);
-//        	var menuArchivo = [{
-//        	    "nombre": "Administración de solución",
-//        	    "wf": 2,
-//        	    "tipo": null,
-//        	    "childrens": [{
-//        	        "nombre": "Modificar perfil",
-//        	        "wf": 3,
-//        	        "tipo": "V",
-//        	        "childrens": []
-//        	    }, {
-//        	        "nombre": "Modificar usuario",
-//        	        "wf": 4,
-//        	        "tipo": "V",
-//        	        "childrens": []
-//        	    }]
-//        	}, {
-//        	    "nombre": "Alarmas",
-//        	    "wf": 40,
-//        	    "tipo": null,
-//        	    "childrens": [{
-//        	        "nombre": "Modificar alarma",
-//        	        "wf": 40,
-//        	        "tipo": "V",
-//        	        "childrens": []
-//        	    }]
-//        	}];
-        	
-//            vm.menuFile = [
+//            vm.menuReport = [
 //                           	{
-//                        	   "nombre": "Archivos",
+//                        	   "nombre": "Reportes",
 //                               "wf": 1,
 //                               "tipo":null,
-//                        	   "childrens":+menuArchivo
+//                        	   "childrens":+menuReporte
 //                           	}          
 //          ]; 
-        }
+        }   
     }
 })();

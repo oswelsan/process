@@ -124,33 +124,43 @@
 			</div>
 		</a>	  
     </li>
-    <li ng-repeat="menuReport in vm.menuReport">
-        <a href="javascript:;" data-toggle="collapse" data-target="#rep-{{menuReport.wf}}"><i class="fa fa-chevron-down"></i> {{menuReport.nombre}}</a>
-        <ul id="rep-{{menuReport.wf}}" class="collapse">
-            <li ng-repeat="submenu in menuReport.childrens">
-                <a href="javascript:;" data-toggle="collapse" data-target="#rep-{{submenu.wf}}"><i class="fa fa-chevron-down"></i> {{submenu.nombre}}</a>
-		        <ul id="rep-{{submenu.wf}}" class="collapse">
-		            <li ng-repeat="subsubmenu in submenu.childrens">
-		                <a href="#">{{subsubmenu.nombre}}</a>
+	<li ng-show="vm.isShowMenuReport">
+	<a href="javascript:;" data-toggle="collapse" data-target="#rep-1"><i class="fa fa-chevron-down"></i> Reportes</a>
+		<ul id="rep-1" class="collapse">
+		    <li ng-repeat="menuReport in vm.menuReport">
+		        <a href="javascript:;" data-toggle="collapse" data-target="#rep-{{menuReport.wf}}"><i class="fa fa-chevron-down"></i> {{menuReport.nombre}}</a>
+		        <ul id="rep-{{menuReport.wf}}" class="collapse">
+		            <li ng-repeat="submenu in menuReport.childrens">
+		                <a href="javascript:;" data-toggle="collapse" data-target="#rep-{{submenu.wf}}"><i class="fa fa-chevron-down"></i> {{submenu.nombre}}</a>
+				        <ul id="rep-{{submenu.wf}}" class="collapse">
+				            <li ng-repeat="subsubmenu in submenu.childrens">
+				                <a href="#">{{subsubmenu.nombre}}</a>
+				            </li>
+				        </ul>               
 		            </li>
-		        </ul>               
-            </li>
-        </ul>
-    </li>
-    <li ng-repeat="menuFile in vm.menuFile">
-        <a href="javascript:;" data-toggle="collapse" data-target="#fil-{{menuFile.wf}}"><i class="fa fa-chevron-down"></i> {{menuFile.nombre}}</a>
-        <ul id="fil-{{menuFile.wf}}" class="collapse">
-            <li ng-repeat="submenu in menuFile.childrens">
-                <a href="javascript:;" data-toggle="collapse" data-target="#fil-{{submenu.wf}}"><i class="fa fa-chevron-down"></i> {{submenu.nombre}}</a>
-		        <ul id="fil-{{submenu.wf}}" class="collapse">
-		            <li ng-repeat="subsubmenu in submenu.childrens">
-		                <a href="#">{{subsubmenu.nombre}}</a>
+		        </ul>
+		    </li>
+		</ul>
+	</li>
+	  
+    <li ng-show="vm.isShowMenuFile">
+    	<a href="javascript:;" data-toggle="collapse" data-target="#fil-1"><i class="fa fa-chevron-down"></i> Archivos</a>
+	    <ul id="fil-1" class="collapse">
+		    <li ng-repeat="menuFile in vm.menuFile">
+		        <a href="javascript:;" data-toggle="collapse" data-target="#fil-{{menuFile.wf}}"><i class="fa fa-chevron-down"></i> {{menuFile.nombre}}</a>
+		        <ul id="fil-{{menuFile.wf}}" class="collapse">
+		            <li ng-repeat="submenu in menuFile.childrens">
+		                <a href="javascript:;" data-toggle="collapse" data-target="#fil-{{submenu.wf}}"><i class="fa fa-chevron-down"></i> {{submenu.nombre}}</a>
+				        <ul id="fil-{{submenu.wf}}" class="collapse">
+				            <li ng-repeat="subsubmenu in submenu.childrens">
+				                <a href="#">{{subsubmenu.nombre}}</a>
+				            </li>
+				        </ul>               
 		            </li>
-		        </ul>               
-            </li>
-        </ul>
-    </li>  
-
+		        </ul>
+		    </li>
+		</ul>
+	</li>
 </ul>  
 </div>          
  </nav>

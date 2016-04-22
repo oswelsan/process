@@ -26,9 +26,10 @@
                 return config;
             },
 
-            response: function (res) {			    
+            response: function (res) {
+            	
 				var ticket = res.data.ticket; 				
-                if (res.config.url.indexOf(API) == 0 && ticket) {                	
+                if (res.config.url.indexOf(API) == 0 && ticket) {
                     ticketService.saveTicket(ticket);
                 }
                 return res;
@@ -226,12 +227,7 @@
         //$profile
         function getProfile(user) {
         	alert(vm.user.name);
-            return $http.get(API + '/profile/'+PRUEBA2,
-                    {
-                        headers: {
-                            'Authorization': 'Basic ' + btoa('PRUEBA2' + ':' + 'PRUEBA2')
-                        }
-                    })
+            return $http.get(API + '/profile/'+PRUEBA2)
                         .then(getProfileComplete);
                         //.catch(getProfileFailed);
 
@@ -266,7 +262,6 @@
                         //.catch(getMenuFileFailed);
 
                     function getMenuFileComplete(response){
-                    	getMenuReport();
                         return response.data;
                     }
 
@@ -281,7 +276,6 @@
                         //.catch(getMenuReportFailed);
 
                     function getMenuReportComplete(response){
-                    	//alert(response.data);
                         return response.data;
                     }
 
