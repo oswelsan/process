@@ -27,7 +27,7 @@
             },
 
             response: function (res) {
-            	
+            	//alert(res.config.headers('Ticket'));
 				var ticket = res.data.ticket; 				
                 if (res.config.url.indexOf(API) == 0 && ticket) {
                     ticketService.saveTicket(ticket);
@@ -36,7 +36,10 @@
             },
 
             responseError: function (rejection) {
-
+            	//alert("entrando en resposeError respuesta:"+rejection.status);
+            	//processEngine.getMessageError(1);
+            	//vm.messageError = processEngine.getMessageError(20000);
+                //vm.showError= true;
                 return rejection;
 
             }

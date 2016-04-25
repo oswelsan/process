@@ -26,6 +26,10 @@ Login page
   padding-bottom: 15px;  
 }
 
+.width2 {
+  width: 300px !important;
+}
+
 .login .content h3 {
   color: #eee;
 }

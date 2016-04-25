@@ -42,12 +42,66 @@
                     controllerAs: 'vm'
                 }
             }
-        })        
+        })
+        .state('root.main.profile', {
+            views: {
+                'container@root':{
+                    templateUrl: 'app/views/sessions/profile/profile.html',
+                    controller: 'SessionsController',
+                    controllerAs: 'vm'
+                }
+            }
+        }) 
+        .state('root.main.changepass', {
+            views: {
+                'container@root':{
+                    templateUrl: 'app/views/sessions/profile/change_pass.html',
+                    controller: 'SessionsController',
+                    controllerAs: 'vm'
+                }
+            }
+        })
+        .state('root.main.changepassapro', {
+            views: {
+                'container@root':{
+                    templateUrl: 'app/views/sessions/profile/change_pass_apro.html',
+                    controller: 'SessionsController',
+                    controllerAs: 'vm'
+                }
+            }
+        }) 
+        .state('root.main.changesecquest', {
+            views: {
+                'container@root':{
+                    templateUrl: 'app/views/sessions/profile/questions.html',
+                    controller: 'SessionsController',
+                    controllerAs: 'vm'
+                }
+            }
+        })
         .state('root.login', {
             url: '',
             views:{
                 'login@root':{
                     templateUrl: 'app/views/sessions/login.html',
+                    controller: 'SessionsController',
+                    controllerAs: 'vm'
+                }
+            }
+        })
+        .state('root.login.forgot', {
+            views:{
+                'login@root':{
+                    templateUrl: 'app/views/sessions/forgot.html',
+                    controller: 'SessionsController',
+                    controllerAs: 'vm'
+                }
+            }
+        })
+        .state('root.login.question', {
+            views:{
+                'login@root':{
+                    templateUrl: 'app/views/sessions/question.html',
                     controller: 'SessionsController',
                     controllerAs: 'vm'
                 }
