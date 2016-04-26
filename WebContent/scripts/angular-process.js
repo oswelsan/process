@@ -122,10 +122,7 @@
             getMessageError: getMessageError,
             getMenuFile:getMenuFile,
             getMenuReport:getMenuReport,
-<<<<<<< HEAD
-            getEmails:getEmails
-=======
->>>>>>> branch 'master' of https://github.com/oswelsan/process
+            getEmails:getEmails,
             changePassProfile:changePassProfile,
             changePassApprovalProfile:changePassApprovalProfile,
             changeSecurityQuestionProfile:changeSecurityQuestionProfile
