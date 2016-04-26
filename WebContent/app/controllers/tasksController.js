@@ -17,7 +17,7 @@
 
         function activate() {
             getFilter();
-            getTasks();
+           // getTasks();
         }
 
         function getTasks() {

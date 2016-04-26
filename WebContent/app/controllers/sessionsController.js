@@ -15,6 +15,8 @@
         vm.isLogged = processEngine.isLogged;
         vm.isShowMenuFile = false;
         vm.isShowMenuReport = false;
+        vm.isShowBarEmails = false;
+        vm.barEmails = [];
         vm.login = login;
         vm.showChangePass = false;
         vm.loginRecover = loginRecover;
@@ -23,10 +25,6 @@
         vm.back = back;
         vm.forgot = forgot;
         vm.forgot_password = forgot_password;
-        vm.profile = profile;
-        vm.change_pass = change_pass;
-        vm.change_pass_apro  = change_pass_apro;
-        vm.change_sec_questions = change_sec_questions;
         vm.security_questions = security_questions;
         vm.goServices = goServices;
         vm.menuFile = [];
@@ -34,6 +32,7 @@
         vm.environments = [];
         vm.showError = false;
         vm.messageError = "";
+        vm.profile = profile;
         activate();
 
 
@@ -61,12 +60,14 @@
                             user.envi = vm.selectedOption.name; 
                             user.sc = data.sessionCaida;
                             vm.isLogged = true;
+                            ticketService.delStatusCode();
                             // Preguntar al usuario si elimina o recupera la session
                             $state.go('root.login.recuperate');
                         }else{
                             vm.isLogged = false;
                             vm.showError = true;
-                            vm.messageError = processEngine.getMessageError(ticketService.getStatusCode());                         	
+                            vm.messageError = processEngine.getMessageError(ticketService.getStatusCode());
+                            ticketService.delStatusCode();
                         }                		
                 	}
                 });
@@ -102,14 +103,17 @@
         	if (ticketService.isAuthed()){        		
                 processEngine.deleteSession()
                 .then(function (data) {
-                    vm.response = data;  
-                    if (data.statusCode == "0"){                    	 
-                        ticketService.saveTicket('');
+            		if (!ticketService.isStatusCode()){
+                        ticketService.delTicket();
                         $state.go('root.login');
-                    }                     
+            		}else{
+                        vm.isLogged = false;
+                        vm.showError = true;
+                        vm.messageError = processEngine.getMessageError(ticketService.getStatusCode());         			
+            		}                	
+                    vm.response = data;                    
                     return vm.response;
                 });
-
         	}
         }
         
@@ -138,9 +142,11 @@
             		}else if($state.current.name=="root.main.changesecquest"){
             		}else if ($state.current.name!="root.main"){
 						ticketService.delTicket();
+						ticketService.delStatusCode();
 						$state.go('root.login');
 					}
             		getMenu();
+            		getEmails();
             	}else{
             		if($state.current.name=="root.login.forgot"){
             		}else if($state.current.name=="root.login.question"){
@@ -150,6 +156,7 @@
 						}
 						
 						ticketService.delTicket();
+						ticketService.delStatusCode();
 						getEnvironments();					
 					}  		
             	}
@@ -206,6 +213,20 @@
             })
         }
         
+        function getEmails() {
+        	processEngine.getEmails()
+        	.then(function (respuesta) {
+        		if (!ticketService.isStatusCode()){
+        	        vm.isShowBarEmails = true;        	        
+        	        vm.barEmails = respuesta;
+        		}else{
+                    vm.isLogged = false;
+                    vm.showError = true;
+                    vm.messageError = processEngine.getMessageError(ticketService.getStatusCode());         			
+        		}
+            });
+        }        
+        
         function forgot() {
         	$state.go('root.login.forgot');
         }
@@ -222,18 +243,6 @@
         
         function profile(){
         	$state.go('root.main.profile');
-        }
-        
-        function change_pass(){
-        	$state.go('root.main.changepass');
-        }
-        
-        function change_pass_apro(){
-        	$state.go('root.main.changepassapro');
-        }
-        
-        function change_sec_questions(){
-        	$state.go('root.main.changesecquest');
         }
     }
 })();
