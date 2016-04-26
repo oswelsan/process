@@ -1,11 +1,13 @@
 angular.module('gettext').run(['gettextCatalog', function (gettextCatalog) {
     gettextCatalog.setStrings('en', {
-    });
+    }); 
 	gettextCatalog.setStrings('es', {
     	"Login":"Autenticación",
     	"Username":"Usuario",
     	"Password":"Contraseña",
     	"Ok":"Aceptar",
+    	"Email":"Correo",
+    	"Active days":"Días activos",
     	"Select environment":"Seleccione el ambiente",
     	"Delete":"Eliminar",
     	"Recover":"Recuperar",
@@ -17,8 +19,14 @@ angular.module('gettext').run(['gettextCatalog', function (gettextCatalog) {
     	"Detail":"Detalle",
     	"Date":"Fecha",
     	"Time":"Tiempo",
+    	"true":"verdadero",
+    	"false":"falso",
+    	"Please complete all fields":"Por favor complete todos los campos",
+    	"Number of days with expired license":"Cantidad de días con licencia vencida",
     	"global search":"busqueda global",
     	"Profile":"Perfil",
+    	"Incorrect old password":"Contraseña antigua incorrecta",
+    	"Process completed successfully!":"¡Proceso completado exitosamente!",
     	"Login":"Autenticación",
     	"Inbox":"Bandeja de Entrada",
     	"Settings":"Configuraciones",

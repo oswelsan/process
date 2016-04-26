@@ -47,7 +47,7 @@
             views: {
                 'container@root':{
                     templateUrl: 'app/views/sessions/profile/profile.html',
-                    controller: 'SessionsController',
+                    controller: 'ProfileController',
                     controllerAs: 'vm'
                 }
             }
@@ -56,16 +56,16 @@
             views: {
                 'container@root':{
                     templateUrl: 'app/views/sessions/profile/change_pass.html',
-                    controller: 'SessionsController',
+                    controller: 'ProfileController',
                     controllerAs: 'vm'
                 }
             }
-        })
+        }) 
         .state('root.main.changepassapro', {
             views: {
                 'container@root':{
                     templateUrl: 'app/views/sessions/profile/change_pass_apro.html',
-                    controller: 'SessionsController',
+                    controller: 'ProfileController',
                     controllerAs: 'vm'
                 }
             }
@@ -74,7 +74,7 @@
             views: {
                 'container@root':{
                     templateUrl: 'app/views/sessions/profile/questions.html',
-                    controller: 'SessionsController',
+                    controller: 'ProfileController',
                     controllerAs: 'vm'
                 }
             }

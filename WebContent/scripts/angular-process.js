@@ -1,4 +1,4 @@
-﻿(function(){
+﻿﻿(function(){
     'use strict';
 
     angular
@@ -103,7 +103,7 @@
     function processEngine($http, API){
         var isPrimed = false;
         var primePromise;
-        
+         
         //Requests
         var engine = {
             //$environments
@@ -122,7 +122,10 @@
             getMessageError: getMessageError,
             getMenuFile:getMenuFile,
             getMenuReport:getMenuReport,
+<<<<<<< HEAD
             getEmails:getEmails
+=======
+>>>>>>> branch 'master' of https://github.com/oswelsan/process
             changePassProfile:changePassProfile,
             changePassApprovalProfile:changePassApprovalProfile,
             changeSecurityQuestionProfile:changeSecurityQuestionProfile
@@ -266,6 +269,49 @@
                         return error.data;
                     }
         }
+        
+        function changePassProfile(vm) {
+            return $http.get(API + '/updatesecurity?ctx=2&clave1=vieja_clave&clave2=nvaclave&clave3='+vm.user.pass)
+                        .then(changePassProfileComplete);
+                        //.catch(changePassProfileFailed);
+
+                    function changePassProfileComplete(response){
+                        return response.data;
+                    }
+
+                    function changePassProfileFailed(error) {
+                        return error.data;
+                    }
+        }
+        
+        function changePassApprovalProfile(vm) {
+            return $http.get(API + '/updatesecurity?ctx=1&clave1=firmanueva&clave2=pregunta&clave3=respuesta')
+                        .then(changePassApprovalProfileComplete);
+                        //.catch(changePassApprovalProfileFailed);
+
+                    function changePassApprovalProfileComplete(response){
+                        return response.data;
+                    }
+
+                    function changePassApprovalProfileFailed(error) {
+                        return error.data;
+                    }
+        }
+        
+        function changeSecurityQuestionProfile(vm) {
+            return $http.get(API + '/updatesecurity?ctx=0&clave1=Pregunta&clave2=respuesta&clave3=firma')
+                        .then(changeSecurityQuestionProfileComplete);
+                        //.catch(changeSecurityQuestionProfileFailed);
+
+                    function changeSecurityQuestionProfileComplete(response){
+                        return response.data;
+                    }
+
+                    function changeSecurityQuestionProfileFailed(error) {
+                        return error.data;
+                    }
+        }
+        
         
         function changePassProfile(vm) {
             return $http.get(API + '/updatesecurity?ctx=2&clave1=vieja_clave&clave2=nvaclave&clave3='+vm.user.pass)
