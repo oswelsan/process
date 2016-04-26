@@ -23,10 +23,6 @@
         vm.back = back;
         vm.forgot = forgot;
         vm.forgot_password = forgot_password;
-        vm.profile = profile;
-        vm.change_pass = change_pass;
-        vm.change_pass_apro  = change_pass_apro;
-        vm.change_sec_questions = change_sec_questions;
         vm.security_questions = security_questions;
         vm.goServices = goServices;
         vm.menuFile = [];
@@ -34,6 +30,7 @@
         vm.environments = [];
         vm.showError = false;
         vm.messageError = "";
+        vm.profile = profile;
         activate();
 
 
@@ -222,18 +219,6 @@
         
         function profile(){
         	$state.go('root.main.profile');
-        }
-        
-        function change_pass(){
-        	$state.go('root.main.changepass');
-        }
-        
-        function change_pass_apro(){
-        	$state.go('root.main.changepassapro');
-        }
-        
-        function change_sec_questions(){
-        	$state.go('root.main.changesecquest');
         }
     }
 })();
