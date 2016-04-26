@@ -40,25 +40,35 @@
         function login() {
             processEngine.postSession(vm)
                 .then(function (data) {
-                	if (data == null) {    
-                        vm.isLogged = false;                        
-                    }else if (data.statusCode == "15140") {   
-                        user.name = vm.user.name;
-                        user.pass = vm.user.pass;
-                        user.envi = vm.selectedOption.name; 
-                        user.sc = data.sessionCaida;
-                        vm.isLogged = true;
-                        // Preguntar al usuario si elimina o recupera la session
-                        $state.go('root.login.recuperate');
-                    }else{//TODO validar los otros tipos de errores en proceso de login        
-                        user.name = vm.user.name;
-                        user.pass = vm.user.pass;
-                        user.envi = vm.user.envi;
-                        vm.isLogged = true;
-                        $state.go('root.main');
-                    }
-                    vm.response = data;
-                    return vm.response;
+                	if (!ticketService.isStatusCode()){
+                       	if (data == null) {    
+                            vm.isLogged = false;
+                            vm.showError = true;
+                            vm.messageError = processEngine.getMessageError(20000);                            
+                        }else{
+                            user.name = vm.user.name;
+                            user.pass = vm.user.pass;
+                            user.envi = vm.user.envi;
+                            vm.isLogged = true;
+                            $state.go('root.main');                        	
+                        } 
+                        vm.response = data;
+                        return vm.response;
+                	}else{                 		
+                		if (ticketService.getStatusCode() == "15140") {   
+                            user.name = vm.user.name;
+                            user.pass = vm.user.pass;
+                            user.envi = vm.selectedOption.name; 
+                            user.sc = data.sessionCaida;
+                            vm.isLogged = true;
+                            // Preguntar al usuario si elimina o recupera la session
+                            $state.go('root.login.recuperate');
+                        }else{
+                            vm.isLogged = false;
+                            vm.showError = true;
+                            vm.messageError = processEngine.getMessageError(ticketService.getStatusCode());                         	
+                        }                		
+                	}
                 });
         }
         

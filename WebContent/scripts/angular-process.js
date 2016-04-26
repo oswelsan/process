@@ -27,7 +27,6 @@
             },
 
             response: function (res) {
-            	//alert(res.config.headers('Ticket'));
 				var ticket = res.data.ticket; 				
                 if (res.config.url.indexOf(API) == 0 && ticket) {
                     ticketService.saveTicket(ticket);
@@ -36,10 +35,7 @@
             },
 
             responseError: function (rejection) {
-            	//alert("entrando en resposeError respuesta:"+rejection.status);
-            	//processEngine.getMessageError(1);
-            	//vm.messageError = processEngine.getMessageError(20000);
-                //vm.showError= true;
+            	ticketService.statusCode(rejection.status);
                 return rejection;
 
             }
@@ -55,6 +51,11 @@
         self.getTicket = getTicket;
         self.delTicket = delTicket;
         self.isAuthed = isAuthed;
+        //manejo del codigo de error
+        self.statusCode = statusCode;
+        self.getStatusCode = getStatusCode;
+        self.delStatusCode = delStatusCode;
+        self.isStatusCode = isStatusCode;        
 
         function saveTicket(ticket) {
             $window.localStorage['ticket'] = ticket;
@@ -77,6 +78,26 @@
             }
         }
 
+        function statusCode(code) {
+            $window.localStorage['statusCode'] = code;
+        }    
+        
+        function getStatusCode() {
+            return $window.localStorage['statusCode'];
+        }    
+        
+        function delStatusCode() {
+            $window.localStorage.removeItem('statusCode');
+        }   
+        
+        function isStatusCode() {
+            var ticket = self.getStatusCode();
+            if (ticket) {
+                return true;
+            } else {
+                return false;
+            }
+        }        
     }
     //Api request handler.
     function processEngine($http, API){

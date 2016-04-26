@@ -1,7 +1,9 @@
 <div class="container-fluid">
 
 	<div class="row content">
-	
+	<div class="alert alert-danger" ng-show="vm.showError">
+         {{ vm.messageError | translate }}
+	</div>	
 	<div class="col-lg-7">
 		<div class="page-header">
             <img class="img-thumbnail" src="app/images/banner/banner.gif" alt="">
@@ -58,9 +60,6 @@
 		</form>     
 	</div>
 	</div>
-	
-	<div class="alert alert-danger" ng-show="vm.showError">
-         {{ vm.messageError | translate }}
-	</div>
+
 </div>
 		
