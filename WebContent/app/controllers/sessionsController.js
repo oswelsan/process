@@ -192,11 +192,11 @@
         function loadContext() {
         	getMenuFile()
 			.then(function (respuesta) {
-				getMenuReport();		
-			 })
-			.then(function (respuesta) {
-				getEmails();
-			});
+				getMenuReport()
+				.then(function (respuesta) {
+					getEmails();		
+				});
+			 });
         }
         
         function getMenuFile() {
@@ -218,7 +218,7 @@
         }        
         
         function getMenuReport() {
-            processEngine.getMenuReport()
+            return processEngine.getMenuReport()
             .then(function (respuesta) {
             	if (!ticketService.isStatusCode()){
                    	if(respuesta==''){
@@ -236,7 +236,7 @@
         }
         
         function getEmails() {
-        	processEngine.getEmails()
+        	return processEngine.getEmails()
         	.then(function (respuesta) {
         		if (!ticketService.isStatusCode()){
         	        vm.isShowBarEmails = true;        	        
