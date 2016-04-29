@@ -26,8 +26,8 @@
                 return config;
             },
 
-            response: function (res) {
-				var ticket = res.data.ticket; 				
+            response: function (res) {				
+				var ticket = res.headers('Ticket'); 
                 if (res.config.url.indexOf(API) == 0 && ticket) {
                     ticketService.saveTicket(ticket);
                 }

@@ -127,7 +127,7 @@
 
         function activate() {
             if (!!$state.params.environmentName) {
-               return verifyEnvironment();
+               //return verifyEnvironment();
             }
             if (!!user.server) {
             	
@@ -145,8 +145,7 @@
 						ticketService.delStatusCode();
 						$state.go('root.login');
 					}
-            		getMenu();
-            		getEmails();
+            	    loadContext();
             	}else{
             		if($state.current.name=="root.login.forgot"){
             		}else if($state.current.name=="root.login.question"){
@@ -154,7 +153,6 @@
 						if ($state.current.name!="root.login"){
 							$state.go('root.login');
 						}
-						
 						ticketService.delTicket();
 						ticketService.delStatusCode();
 						getEnvironments();					
@@ -191,26 +189,50 @@
         	user.server = environment;
         }
         
-        function getMenu() {
-        	processEngine.getMenuFile()
-        	.then(function (respuesta) {
-        		if(respuesta==''){
-        			vm.isShowMenuFile = false;
-        		}else{
-            		vm.isShowMenuFile = true;
-            		vm.menuFile = respuesta;    		
-        		}
-        		
-                processEngine.getMenuReport()
-                .then(function (respuesta) {
-                	if(respuesta==''){
+        function loadContext() {
+        	getMenuFile()
+			.then(function (respuesta) {
+				getMenuReport();		
+			 })
+			.then(function (respuesta) {
+				getEmails();
+			});
+        }
+        
+        function getMenuFile() {
+            return processEngine.getMenuFile()
+            .then(function (respuesta) {
+            	if (!ticketService.isStatusCode()){
+            		if(respuesta==''){
+            			vm.isShowMenuFile = false;
+            		}else{
+                		vm.isShowMenuFile = true;
+                		vm.menuFile = respuesta;    		
+            		}           		
+            	}else{
+                    vm.isLogged = false;
+                    vm.showError = true;
+                    vm.messageError = processEngine.getMessageError(ticketService.getStatusCode());
+            	} 
+            });        	
+        }        
+        
+        function getMenuReport() {
+            processEngine.getMenuReport()
+            .then(function (respuesta) {
+            	if (!ticketService.isStatusCode()){
+                   	if(respuesta==''){
             			vm.isShowMenuReport = false;
             		}else{
                 		vm.isShowMenuReport = true;
                 		vm.menuReport = respuesta;    		
-            		}
-                })
-            })
+            		}            		
+            	}else{
+                    vm.isLogged = false;
+                    vm.showError = true;
+                    vm.messageError = processEngine.getMessageError(ticketService.getStatusCode());
+            	} 
+            });        	
         }
         
         function getEmails() {
@@ -222,7 +244,7 @@
         		}else{
                     vm.isLogged = false;
                     vm.showError = true;
-                    vm.messageError = processEngine.getMessageError(ticketService.getStatusCode());         			
+                    vm.messageError = processEngine.getMessageError(ticketService.getStatusCode());
         		}
             });
         }        
